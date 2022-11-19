@@ -46,8 +46,8 @@ The project will be setup using the following steps:
 * Create a database in MySQL
 * Create a database connection in Eclipse IDE
 * Create a database connection in MySQL
-* Create a database connection in Tomcat
-* Create a database connection in Tabler
+* Add Tomcat to Eclipse IDE
+* Add Tabler Admin Dashboard Template to the project
 
 ## Patient management
 The patient management module will be able to do the following:
