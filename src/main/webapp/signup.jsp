@@ -14,7 +14,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Sign up - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+    <title>Sign up - OSHMIS</title>
     <!-- CSS files -->
     <link href="./dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -28,16 +28,29 @@
         <div class="text-center mb-4">
           <a href="." class="navbar-brand navbar-brand-autodark"><img src="./static/logo.svg" height="36" alt=""></a>
         </div>
-        <form class="card card-md" action="." method="get">
+        <form class="card card-md" action="." method="post">
           <div class="card-body">
             <h2 class="card-title text-center mb-4">Create new account</h2>
             <div class="mb-3">
               <label class="form-label">Name</label>
-              <input type="text" class="form-control" placeholder="Enter name">
+              <input type="text" name="name" class="form-control" placeholder="Enter name" required>
             </div>
             <div class="mb-3">
               <label class="form-label">Email address</label>
-              <input type="email" class="form-control" placeholder="Enter email">
+              <input type="email" name="email" class="form-control" placeholder="Enter email" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Mobile number</label>
+              <input type="number" name="mobilenumber" class="form-control" placeholder="Enter mobile number" required>
+            </div>
+            <div class="mb-3">
+               <div class="form-label">Security question</div>
+                 <select class="form-select" name="securityQuestion" required>
+                    <option value="What was your first car?">What was your first car?</option>
+                    <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+                    <option value="What elementary school did you attend?">What elementary school did you attend?</option>
+                    <option value="What is the name of the town where you were born?">What is the name of the town where you were born?</option>
+                 </select>
             </div>
             <div class="mb-3">
               <label class="form-label">Password</label>
