@@ -67,12 +67,6 @@
                 </span>
               </div>
             </div>
-            <div class="mb-3">
-              <label class="form-check">
-                <input type="checkbox" class="form-check-input"/>
-                <span class="form-check-label">Agree the <a href="./terms-of-service.html" tabindex="-1">terms and policy</a>.</span>
-              </label>
-            </div>
             <div class="form-footer">
              <a type="submit" href="#" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modal-success">
                     Create new account
