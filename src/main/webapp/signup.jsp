@@ -53,6 +53,10 @@
                  </select>
             </div>
             <div class="mb-3">
+              <label class="form-label">Answer</label>
+              <input type="text" name="answer" class="form-control" placeholder="Enter answer" required>
+            </div>
+            <div class="mb-3">
               <label class="form-label">Password</label>
               <div class="input-group input-group-flat">
                 <input type="password" class="form-control"  placeholder="Password"  autocomplete="off">
