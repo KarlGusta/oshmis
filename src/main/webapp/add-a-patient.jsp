@@ -157,7 +157,7 @@
                                         Patient not registered. Please try again!
                                      </div>
                                     <%} %>
-									<h2 class="card-title text-center mb-4">Registry's Register Patient Form</h2>
+									<h2 class="card-title text-center mb-4">Registry's Add a Patient Form</h2>
                                     <div class="mb-3">
                                            <label class="form-label">Name</label>
                                            <input type="text" class="form-control" name="name" placeholder="Enter name">
