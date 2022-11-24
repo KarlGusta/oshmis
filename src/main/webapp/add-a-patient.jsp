@@ -13,6 +13,9 @@
     <link href="./dist/css/tabler-payments.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-vendors.min.css" rel="stylesheet"/>
     <link href="./dist/css/demo.min.css" rel="stylesheet"/>
+    
+        <!-- 'Alert after submitting' CSS File -->
+    <link href="./dist/css/alert-after-submit.css" rel="stylesheet"/>
   </head>
   <body >
     <div class="page">
@@ -131,14 +134,29 @@
         <div class="page-body">
         <div class="container-xl">
 					<!-- Content here -->
-					<!-- Hidden field for the Sweetalert -->
-					<input type="hidden" id="status"
-						value="<%=request.getAttribute("status")%>" />
-
 					<div class="page page-center">
 						<div class="container-tight py-4">
-							<form class="card card-md" action="registerfarmer" method="post">
+							<form class="card card-md" action="add-a-patient-action.jsp" method="post">
 								<div class="card-body">
+								    <%
+                                      String msg=request.getParameter("msg");
+                                      if("valid".equals(msg))
+                                       {
+                                     %>
+                                     <div class="alert-success">
+                                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                       Patient registered successfully!
+                                     </div>
+                                    <%} %>
+                                    <%
+                                     if("invalid".equals(msg))
+                                       {
+                                      %>
+                                     <div class="alert-error">
+                                       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                        Patient not registered. Please try again!
+                                     </div>
+                                    <%} %>
 									<h2 class="card-title text-center mb-4">Registry's Register Patient Form</h2>
                                     <div class="mb-3">
                                            <label class="form-label">Name</label>
@@ -336,10 +354,11 @@
 									</div>
 									<div class="mb-3">
                                            <label class="form-label"> Add a Location</label>
-                                           <input type="text" class="form-control" name="location" placeholder="Enter location">
+                                           <input type="text" class="form-control" name="addAlocation" placeholder="Enter location">
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">ID Number</label>
+                                           <p><i>If a kid, add year of birth after Parents ID Number, e.g. 313324342022</i></p>
                                            <input type="text" class="form-control" name="idNumber" placeholder="Enter ID number">
                                     </div>
                                     <div class="mb-3">
@@ -348,7 +367,7 @@
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">Next of kin name</label>
-                                           <input type="text" class="form-control" name="nextOfKin" placeholder="Enter next of kin name">
+                                           <input type="text" class="form-control" name="nextOfKinName" placeholder="Enter next of kin name">
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">Next of kin phone number</label>
@@ -364,9 +383,9 @@
 				                    <div class="mb-3">
 										<div class="form-label">Select insurance provider</div>
 										<select class="form-select" name="insuranceProvider" id="insuranceProvider">
+										    <option value="I have no insurance">I have no insurance</option>
 											<option value="NHIF">NHIF</option>
 											<option value="Kenya Reinsurance">Kenya Reinsurance</option>
-											<option value="I have no insurance">I have no insurance</option>
 										</select>
 									</div>									
 									<div class="form-footer">
