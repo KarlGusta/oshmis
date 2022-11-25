@@ -1,3 +1,5 @@
+<%@page import="project.ConnectionProvider"%>
+<%@page import="java.sql.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -52,8 +54,8 @@
                       <a class="dropdown-item" href="add-a-patient.jsp">
                         Add a patient
                       </a>
-                      <a class="dropdown-item" href="edit-a-patient.jsp">
-                        Edit a patient
+                      <a class="dropdown-item" href="all-patients-edit-patients.jsp">
+                        Edit patients
                       </a>
                     </div>
                   </div>
@@ -100,7 +102,7 @@
                   <!--<span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>  -->
                 <!-- This is the end of the profile photo. I have commented it out -->
                 <div class="d-none d-xl-block ps-2">
-                  <div>Pawe Kuna</div>
+                  <div>Karl</div>
                   <div class="mt-1 small text-muted">UI Designer</div>
                 </div>
               </a>
@@ -139,8 +141,37 @@
 					<!-- Content here -->
 					<div class="page page-center">
 						<div class="container-tight py-4">
+						
+						<!-- Product ID -->
+						<%
+						    // First id to start at one
+						    int id = 1;
+						
+						    try
+						    {
+						    	Connection theConnectionToTheDB = ConnectionProvider.getCon();
+						    	Statement theStatement = theConnectionToTheDB.createStatement();
+						    	
+						    	ResultSet theResultSet = theStatement.executeQuery("select max(id) from patients");
+						    	while(theResultSet.next())
+						    	{
+						    		// First, we are getting the id from the DB
+						    		id = theResultSet.getInt(1);
+						    		
+						    		// Increment the ID by 1. 
+						    		id = id + 1;
+						    		
+						    		
+						    	}
+						    }
+						    catch(Exception e)
+						    {}
+						%>
+						<!-- End of Product ID -->
+						
 							<form class="card card-md" action="add-a-patient-action.jsp" method="post">
 								<div class="card-body">
+								<!-- Success or error message -->
 								    <%
                                       String msg=request.getParameter("msg");
                                       if("valid".equals(msg))
@@ -160,7 +191,9 @@
                                         Patient not registered. Please try again!
                                      </div>
                                     <%} %>
+                                    <!-- End of success or error message -->
 									<h2 class="card-title text-center mb-4">Registry's Add a Patient Form</h2>
+									<input type="hidden" class="form-control" name="id" value="<%out.println(id); %>">
                                     <div class="mb-3">
                                            <label class="form-label">Name</label>
                                            <input type="text" class="form-control" name="name" placeholder="Enter name">

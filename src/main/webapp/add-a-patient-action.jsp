@@ -5,6 +5,7 @@
 
 <%
     // Get the data from the form
+    String id = request.getParameter("id");
     String name = request.getParameter("name");
 	String monthOfBirth = request.getParameter("monthOfBirth");
 	String dateOfBirth = request.getParameter("dateOfBirth");
@@ -25,21 +26,22 @@
 		Connection connectionToTheDB = ConnectionProvider.getCon();
 		
 		// Prepared statement to insert
-		PreparedStatement thePreparedStatement = connectionToTheDB.prepareStatement("insert into patients values(?,?,?,?,?,?,?,?,?,?,?,?)");
+		PreparedStatement thePreparedStatement = connectionToTheDB.prepareStatement("insert into patients values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		
 		// Set the values to the one collected in the variables from the form to the ones in the DB
-		thePreparedStatement.setString(1, name);
-		thePreparedStatement.setString(2, monthOfBirth);
-		thePreparedStatement.setString(3, dateOfBirth);
-		thePreparedStatement.setString(4, yearOfBirth);
-		thePreparedStatement.setString(5, location);
-		thePreparedStatement.setString(6, addALocation);
-		thePreparedStatement.setString(7, idNumber);
-		thePreparedStatement.setString(8, phoneNumber);
-		thePreparedStatement.setString(9, nextOfKinName);
-		thePreparedStatement.setString(10, nextOfKinPhoneNumber);
-		thePreparedStatement.setString(11, modeOfPayment);
-		thePreparedStatement.setString(12, insuranceProvider);
+		thePreparedStatement.setString(1, id);
+		thePreparedStatement.setString(2, name);
+		thePreparedStatement.setString(3, monthOfBirth);
+		thePreparedStatement.setString(4, dateOfBirth);
+		thePreparedStatement.setString(5, yearOfBirth);
+		thePreparedStatement.setString(6, location);
+		thePreparedStatement.setString(7, addALocation);
+		thePreparedStatement.setString(8, idNumber);
+		thePreparedStatement.setString(9, phoneNumber);
+		thePreparedStatement.setString(10, nextOfKinName);
+		thePreparedStatement.setString(11, nextOfKinPhoneNumber);
+		thePreparedStatement.setString(12, modeOfPayment);
+		thePreparedStatement.setString(13, insuranceProvider);
 		
 		// This will execute ad update the data
 		thePreparedStatement.executeUpdate();
