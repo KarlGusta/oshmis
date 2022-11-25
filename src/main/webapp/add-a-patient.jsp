@@ -52,6 +52,9 @@
                       <a class="dropdown-item" href="add-a-patient.jsp">
                         Add a patient
                       </a>
+                      <a class="dropdown-item" href="edit-a-patient.jsp">
+                        Edit a patient
+                      </a>
                     </div>
                   </div>
                 </div>
