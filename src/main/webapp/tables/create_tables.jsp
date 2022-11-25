@@ -1,6 +1,5 @@
 <!-- This is to import the DB connection -->
 <%@page import="project.ConnectionProvider"%>
-
 <!-- This is for sql -->
 <%@page import="java.sql.*" %>
 
