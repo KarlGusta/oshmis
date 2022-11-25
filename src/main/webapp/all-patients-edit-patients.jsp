@@ -159,79 +159,42 @@
 		                  class="table table-vcenter card-table">
                       <thead>
                         <tr>
+                          <th>No.</th>
                           <th>Name</th>
-                          <th>Title</th>
-                          <th>Email</th>
-                          <th>Role</th>
+                          <th>ID Number</th>
+                          <th>Location</th>
+                          <th>Mode of payment</th>
                           <th class="w-1"></th>
                         </tr>
                       </thead>
                       <tbody>
+                      <%
+                          try
+                          {
+                        	  Connection theConnectionToTheDB = ConnectionProvider.getCon();
+                        	  Statement theStatement = theConnectionToTheDB.createStatement();
+                        	  
+                        	  ResultSet theResultSet = theStatement.executeQuery("select * from patients");
+                        	  
+                        	  while(theResultSet.next())
+                        	  {
+                      %>
                         <tr>
-                          <td >Paweł Kuna</td>
-                          <td class="text-muted" >
-                            UI Designer, Training
-                          </td>
-                          <td class="text-muted" ><a href="#" class="text-reset">paweluna@howstuffworks.com</a></td>
-                          <td class="text-muted" >
-                            User
-                          </td>
-                          <td>
-                            <a href="#">Edit</a>
-                          </td>
+                          <td><%=theResultSet.getString(1) %></td>
+                          <td ><%=theResultSet.getString(2) %></td>
+                          <td class="text-muted" ><%=theResultSet.getString(8) %></td>
+                          <td class="text-muted" ><a href="#" class="text-reset"><%=theResultSet.getString(6) %></a></td>
+                          <td class="text-muted" ><%=theResultSet.getString(12) %></td>
+                          <td><a href="#">Edit</a></td>
                         </tr>
-                        <tr>
-                          <td >Jeffie Lewzey</td>
-                          <td class="text-muted" >
-                            Chemical Engineer, Support
-                          </td>
-                          <td class="text-muted" ><a href="#" class="text-reset">jlewzey1@seesaa.net</a></td>
-                          <td class="text-muted" >
-                            Admin
-                          </td>
-                          <td>
-                            <a href="#">Edit</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td >Mallory Hulme</td>
-                          <td class="text-muted" >
-                            Geologist IV, Support
-                          </td>
-                          <td class="text-muted" ><a href="#" class="text-reset">mhulme2@domainmarket.com</a></td>
-                          <td class="text-muted" >
-                            User
-                          </td>
-                          <td>
-                            <a href="#">Edit</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td >Dunn Slane</td>
-                          <td class="text-muted" >
-                            Research Nurse, Sales
-                          </td>
-                          <td class="text-muted" ><a href="#" class="text-reset">dslane3@epa.gov</a></td>
-                          <td class="text-muted" >
-                            Owner
-                          </td>
-                          <td>
-                            <a href="#">Edit</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td >Emmy Levet</td>
-                          <td class="text-muted" >
-                            VP Product Management, Accounting
-                          </td>
-                          <td class="text-muted" ><a href="#" class="text-reset">elevet4@senate.gov</a></td>
-                          <td class="text-muted" >
-                            Admin
-                          </td>
-                          <td>
-                            <a href="#">Edit</a>
-                          </td>
-                        </tr>
+                        <%
+                        	  }
+                          }
+                          catch(Exception e)
+                          {
+                        	  System.out.println(e);
+                          }
+                        %>
                       </tbody>
                     </table>
                   </div>
