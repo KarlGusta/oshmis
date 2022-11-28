@@ -8,7 +8,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>OSHMIS - Add a Patient</title>
+    <title>OSHMIS - Edit a Patient</title>
     <!-- CSS files -->
     <link href="./dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -144,34 +144,22 @@
 						
 						<!-- Product ID -->
 						<%
-						    // First id to start at one
-						    int id = 1;
+						    // Get the id from the URL
+                            String id = request.getParameter("id");
 						
 						    try
 						    {
 						    	Connection theConnectionToTheDB = ConnectionProvider.getCon();
 						    	Statement theStatement = theConnectionToTheDB.createStatement();
 						    	
-						    	ResultSet theResultSet = theStatement.executeQuery("select max(id) from patients");
+						    	ResultSet theResultSet = theStatement.executeQuery("select * from patients where id='"+id+"'");
 						    	while(theResultSet.next())
 						    	{
-						    		// First, we are getting the id from the DB
-						    		id = theResultSet.getInt(1);
 						    		
-						    		// Increment the ID by 1. 
-						    		id = id + 1;
-						    		
-						    		
-						    	}
-						    }
-						    catch(Exception e)
-						    {
-						    	System.out.println(e);
-						    }
 						%>
 						<!-- End of Product ID -->
 						
-							<form class="card card-md" action="add-a-patient-action.jsp" method="post">
+							<form class="card card-md" action="edit-a-patient-action.jsp" method="post">
 								<div class="card-body">
 								<!-- Success or error message -->
 								    <%
@@ -194,11 +182,11 @@
                                      </div>
                                     <%} %>
                                     <!-- End of success or error message -->
-									<h2 class="card-title text-center mb-4">Registry's Add a Patient Form</h2>
-									<input type="hidden" class="form-control" name="id" value="<%out.println(id); %>">
+									<h2 class="card-title text-center mb-4">Edit a Patient Form</h2>
+									<input type="hidden" name="id" value="<% out.println(id); %>">
                                     <div class="mb-3">
                                            <label class="form-label">Name</label>
-                                           <input type="text" class="form-control" name="name" placeholder="Enter name">
+                                           <input type="text" class="form-control" name="name" value="<%=theResultSet.getString(2) %>" placeholder="Enter name">
                                     </div>
 									<div class="mb-3">
 										<label class="form-label">D.O.B</label>
@@ -206,6 +194,7 @@
 											<div class="col-5">
 												<select name="monthOfBirth" class="form-select">
 													<option value="">Month</option>
+													<option value="<%=theResultSet.getString(3) %>" selected><%=theResultSet.getString(3) %></option>
 													<option value="1">January</option>
 													<option value="2">February</option>
 													<option value="3">March</option>
@@ -223,6 +212,7 @@
 											<div class="col-3">
 												<select name="dateOfBirth" class="form-select">
 													<option value="">Day</option>
+													<option value="<%=theResultSet.getString(4) %>" selected><%=theResultSet.getString(4) %></option>
 													<option value="1">1</option>
 													<option value="2">2</option>
 													<option value="3">3</option>
@@ -242,7 +232,7 @@
 													<option value="17">17</option>
 													<option value="18">18</option>
 													<option value="19">19</option>
-													<option value="20" selected>20</option>
+													<option value="20">20</option>
 													<option value="21">21</option>
 													<option value="22">22</option>
 													<option value="23">23</option>
@@ -259,6 +249,7 @@
 											<div class="col-4">
 												<select name="yearOfBirth" class="form-select">
 													<option value="">Year</option>
+													<option value="<%=theResultSet.getString(5) %>"><%=theResultSet.getString(5) %></option>
 													<option value="2014">2014</option>
 													<option value="2013">2013</option>
 													<option value="2012">2012</option>
@@ -386,6 +377,7 @@
 										<p><i>If location not available in list, 'select not available in the list' then add at the next box</i></p>
 										<select class="form-select" name="location" id="location">
 											<option value="Nanyuki">Nanyuki</option>
+											<option><%=theResultSet.getString(6) %></option>
 											<option value="Thingithu">Thingithu</option>
 											<option value="Muthaiga">Muthaiga</option>
 											<option value="Likii">Likii</option>
@@ -394,28 +386,29 @@
 									</div>
 									<div class="mb-3">
                                            <label class="form-label"> Add a Location</label>
-                                           <input type="text" class="form-control" name="addAlocation" placeholder="Enter location">
+                                           <input type="text" class="form-control" value="<%=theResultSet.getString(7) %>" name="addAlocation" placeholder="Enter location">
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">ID Number</label>
                                            <p><i>If a kid, add year of birth after Parents ID Number, e.g. 313324342022</i></p>
-                                           <input type="text" class="form-control" name="idNumber" placeholder="Enter ID number">
+                                           <input type="text" class="form-control" value="<%=theResultSet.getString(8) %>" name="idNumber" placeholder="Enter ID number">
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">Phone number</label>
-                                           <input type="text" class="form-control" name="phoneNumber" placeholder="Phone number">
+                                           <input type="text" class="form-control" value="<%=theResultSet.getString(9) %>" name="phoneNumber" placeholder="Phone number">
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">Next of kin name</label>
-                                           <input type="text" class="form-control" name="nextOfKinName" placeholder="Enter next of kin name">
+                                           <input type="text" class="form-control" value="<%=theResultSet.getString(10) %>" name="nextOfKinName" placeholder="Enter next of kin name">
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">Next of kin phone number</label>
-                                           <input type="text" class="form-control" name="nextOfKinPhoneNumber" placeholder="Enter next of kin phone number">
+                                           <input type="text" class="form-control" value="<%=theResultSet.getString(11) %>" name="nextOfKinPhoneNumber" placeholder="Enter next of kin phone number">
                                     </div>
 					                <div class="mb-3">
 										<div class="form-label">Mode of payment</div>
 										<select class="form-select" name="modeOfPayment" id="modeOfPayment">
+										    <option value="<%=theResultSet.getString(12) %>"><%=theResultSet.getString(12) %></option>
 											<option value="Cash">Cash</option>
 											<option value="Insurance">Insurance</option>
 										</select>
@@ -423,16 +416,25 @@
 				                    <div class="mb-3">
 										<div class="form-label">Select insurance provider</div>
 										<select class="form-select" name="insuranceProvider" id="insuranceProvider">
+										    <option value="<%=theResultSet.getString(13) %>"><%=theResultSet.getString(13) %></option>
 										    <option value="I have no insurance">I have no insurance</option>
 											<option value="NHIF">NHIF</option>
 											<option value="Kenya Reinsurance">Kenya Reinsurance</option>
 										</select>
 									</div>									
 									<div class="form-footer">
-										<button type="submit" class="btn btn-primary w-100">Register a patient</button>
+										<button type="submit" class="btn btn-primary w-100">Edit a patient</button>
 									</div>
 								</div>
 							</form>
+							<%
+						    	}
+						    }
+						    catch(Exception e)
+						    {
+						    	System.out.println(e);
+						    }
+							%>
 						</div>
 					</div>
         </div>
