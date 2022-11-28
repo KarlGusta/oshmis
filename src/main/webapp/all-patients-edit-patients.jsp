@@ -147,6 +147,29 @@
               </div>
             </div>
           </div>
+          
+           <!-- Success or error message -->
+			<%
+                String msg=request.getParameter("msg");
+                if("done".equals(msg))
+                  {
+             %>
+             <div class="alert-success">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                     Edit patient details successful!
+             </div>
+             <%} %>
+             <%
+                 if("wrong".equals(msg))
+                  {
+              %>
+             <div class="alert-error">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                     Patient details not edited. Please try again!
+             </div>
+             <%} %>
+         <!-- End of success or error message -->
+         
         </div>
         <div class="page-body">
         <div class="container-xl">
