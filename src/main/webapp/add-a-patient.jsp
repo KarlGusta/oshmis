@@ -55,7 +55,7 @@
                         Add a patient
                       </a>
                       <a class="dropdown-item" href="all-patients-edit-patients.jsp">
-                        Edit patients
+                        All patients and edit patient
                       </a>
                     </div>
                   </div>
@@ -165,7 +165,9 @@
 						    	}
 						    }
 						    catch(Exception e)
-						    {}
+						    {
+						    	System.out.println(e);
+						    }
 						%>
 						<!-- End of Product ID -->
 						
@@ -381,11 +383,13 @@
 									</div>
 			                        <div class="mb-3">
 										<div class="form-label">Location</div>
+										<p><i>If location not available in list, 'select not available in the list' then add at the next box</i></p>
 										<select class="form-select" name="location" id="location">
 											<option value="Nanyuki">Nanyuki</option>
 											<option value="Thingithu">Thingithu</option>
 											<option value="Muthaiga">Muthaiga</option>
 											<option value="Likii">Likii</option>
+											<option value="Not available">Not available in the list</option>
 										</select>
 									</div>
 									<div class="mb-3">
