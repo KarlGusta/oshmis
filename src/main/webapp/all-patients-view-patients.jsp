@@ -8,7 +8,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>OSHMIS - All patients - Edit patients</title>
+    <title>OSHMIS - All patients - View patients</title>
     <!-- CSS files -->
     <link href="./dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -126,7 +126,7 @@
                     <span class="input-icon-addon">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7" /><line x1="21" y1="21" x2="15" y2="15" /></svg>
                     </span>
-                    <input type="text" value="" class="form-control" placeholder="Searchâ¦" aria-label="Search in website">
+                    <input type="text" value="" class="form-control" placeholder="Search…" aria-label="Search in website">
                   </div>
                 </form>
               </div>
@@ -211,7 +211,8 @@
                           <td class="text-muted" ><%=theResultSet.getString(8) %></td>
                           <td class="text-muted" ><a href="#" class="text-reset"><%=theResultSet.getString(6) %></a></td>
                           <td class="text-muted" ><%=theResultSet.getString(12) %></td>
-                          <td><a href="edit-a-patient.jsp?id=<%=theResultSet.getString(1) %>">Edit</a></td>
+                          <!-- <td><a href="edit-a-patient.jsp?id=<%=theResultSet.getString(1) %>">View</a></td> -->
+                          <td><a href="view-patient.jsp">View</a></td>
                         </tr>
                         <%
                         	  }

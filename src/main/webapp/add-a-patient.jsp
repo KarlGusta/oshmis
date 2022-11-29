@@ -57,6 +57,9 @@
                       <a class="dropdown-item" href="all-patients-edit-patients.jsp">
                         All patients and edit patient
                       </a>
+                      <a class="dropdown-item" href="all-patients-view-patients.jsp">
+                        All patients and view patient
+                      </a>
                     </div>
                   </div>
                 </div>
