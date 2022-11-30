@@ -145,7 +145,7 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                  All patients and edit a patient
+                  All patients and view a patient
                 </h2>
               </div>
             </div>
