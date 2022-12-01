@@ -212,7 +212,7 @@
                           <td class="text-muted" ><a href="#" class="text-reset"><%=theResultSet.getString(6) %></a></td>
                           <td class="text-muted" ><%=theResultSet.getString(12) %></td>
                           <!-- <td><a href="edit-a-patient.jsp?id=<%=theResultSet.getString(1) %>">View</a></td> -->
-                          <td><a href="view-patient.jsp">View</a></td>
+                          <td><a href="view-patient.jsp?id=<%=theResultSet.getString(1) %>">View</a></td>
                         </tr>
                         <%
                         	  }
