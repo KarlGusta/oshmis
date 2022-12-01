@@ -10,6 +10,7 @@
 	String monthOfBirth = request.getParameter("monthOfBirth");
 	String dateOfBirth = request.getParameter("dateOfBirth");
 	String yearOfBirth = request.getParameter("yearOfBirth");
+	String gender = request.getParameter("gender");
 	String location = request.getParameter("location");
 	String addALocation = request.getParameter("addALocation");
 	String idNumber = request.getParameter("idNumber");
@@ -26,7 +27,7 @@
 		Connection connectionToTheDB = ConnectionProvider.getCon();
 		
 		// Prepared statement to insert
-		PreparedStatement thePreparedStatement = connectionToTheDB.prepareStatement("insert into patients values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		PreparedStatement thePreparedStatement = connectionToTheDB.prepareStatement("insert into patients values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		
 		// Set the values to the one collected in the variables from the form to the ones in the DB
 		thePreparedStatement.setString(1, id);
@@ -34,14 +35,15 @@
 		thePreparedStatement.setString(3, monthOfBirth);
 		thePreparedStatement.setString(4, dateOfBirth);
 		thePreparedStatement.setString(5, yearOfBirth);
-		thePreparedStatement.setString(6, location);
-		thePreparedStatement.setString(7, addALocation);
-		thePreparedStatement.setString(8, idNumber);
-		thePreparedStatement.setString(9, phoneNumber);
-		thePreparedStatement.setString(10, nextOfKinName);
-		thePreparedStatement.setString(11, nextOfKinPhoneNumber);
-		thePreparedStatement.setString(12, modeOfPayment);
-		thePreparedStatement.setString(13, insuranceProvider);
+		thePreparedStatement.setString(6, gender);
+		thePreparedStatement.setString(7, location);
+		thePreparedStatement.setString(8, addALocation);
+		thePreparedStatement.setString(9, idNumber);
+		thePreparedStatement.setString(10, phoneNumber);
+		thePreparedStatement.setString(11, nextOfKinName);
+		thePreparedStatement.setString(12, nextOfKinPhoneNumber);
+		thePreparedStatement.setString(13, modeOfPayment);
+		thePreparedStatement.setString(14, insuranceProvider);
 		
 		// This will execute ad update the data
 		thePreparedStatement.executeUpdate();

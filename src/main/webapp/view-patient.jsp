@@ -206,34 +206,51 @@
 															<h3 class="card-title">General Patient Information</h3>
 														</div>
 														<div class="card-body">
+
+															<!-- Product ID -->
+															<%
+															// Get the id from the URL
+															String id = request.getParameter("id");
+
+															try {
+																Connection theConnectionToTheDB = ConnectionProvider.getCon();
+																Statement theStatement = theConnectionToTheDB.createStatement();
+
+																ResultSet theResultSet = theStatement.executeQuery("select * from patients where id='" + id + "'");
+																while (theResultSet.next()) {
+															%>
+															<!-- End of Product ID -->
+
 															<form>
 																<div class="form-group mb-3 ">
 																	<label class="form-label">Patient Gender *</label>
 																	<div>
-																		<select class="form-select">
-																			<option>Male</option>
-																			<option>Female</option>
+																		<select class="form-select" disabled>
+																			<option value="<%=theResultSet.getString(6) %>"><%=theResultSet.getString(6) %></option>
+																			<option value="Male">Male</option>
+																			<option value="Female">Female</option>
 																		</select>
 																	</div>
 																</div>
 																<div class="mb-3">
 																	<label class="form-label">Name</label> <input
 																		type="text" class="form-control" name="name"
-																		placeholder="Enter name">
+																		placeholder="Enter name" value="<%=theResultSet.getString(2) %>" disabled>
 																</div>
 																<div class="mb-3">
 																	<label class="form-label">Patient's Date of
 																		Birth</label>
 																	<div class="row g-2">
 																		<div class="col-5">
-																			<select name="monthOfBirth" class="form-select">
+																			<select name="monthOfBirth" class="form-select" disabled>
 																				<option value="">Month</option>
+																				<option selected="selected" value="<%=theResultSet.getString(3) %>"><%=theResultSet.getString(3) %></option>
 																				<option value="1">January</option>
 																				<option value="2">February</option>
 																				<option value="3">March</option>
 																				<option value="4">April</option>
 																				<option value="5">May</option>
-																				<option selected="selected" value="6">June</option>
+																				<option value="6">June</option>
 																				<option value="7">July</option>
 																				<option value="8">August</option>
 																				<option value="9">September</option>
@@ -243,8 +260,9 @@
 																			</select>
 																		</div>
 																		<div class="col-3">
-																			<select name="dateOfBirth" class="form-select">
+																			<select name="dateOfBirth" class="form-select" disabled>
 																				<option value="">Day</option>
+																				<option value="<%=theResultSet.getString(4) %>"><%=theResultSet.getString(4) %></option>
 																				<option value="1">1</option>
 																				<option value="2">2</option>
 																				<option value="3">3</option>
@@ -279,8 +297,9 @@
 																			</select>
 																		</div>
 																		<div class="col-4">
-																			<select name="yearOfBirth" class="form-select">
+																			<select name="yearOfBirth" class="form-select" disabled>
 																				<option value="">Year</option>
+																				<option value="<%=theResultSet.getString(5) %>"><%=theResultSet.getString(5) %></option>
 																				<option value="2014">2014</option>
 																				<option value="2013">2013</option>
 																				<option value="2012">2012</option>
@@ -406,17 +425,20 @@
 																<div class="mb-3">
 																	<label class="form-label">Patient Height(in
 																		cms) *</label> <input type="text" class="form-control"
-																		name="patientHeight" placeholder="Enter patient height">
+																		name="patientHeight"
+																		placeholder="Enter patient height">
 																</div>
 																<div class="mb-3">
 																	<label class="form-label">Patient Weight(in
 																		kgs) *</label> <input type="text" class="form-control"
-																		name="patientWeight" placeholder="Enter patient weight">
+																		name="patientWeight"
+																		placeholder="Enter patient weight">
 																</div>
 																<div class="mb-3">
 																	<label class="form-label">Reasons for seeing
 																		the doctor *</label> <input type="text" class="form-control"
-																		name="reasonsForSeeingTheDoctor" placeholder="Enter the reasons for seeing the doctor">
+																		name="reasonsForSeeingTheDoctor"
+																		placeholder="Enter the reasons for seeing the doctor">
 																</div>
 																<br />
 																<div class="mb-3">
@@ -425,8 +447,7 @@
 																<div class="dropdown-divider"></div>
 																<div class="mb-3">
 																	<label class="form-label">Please list any drug
-																		allergies
-																	</label>
+																		allergies </label>
 																	<textarea class="form-control"
 																		name="listAnyDrugAllergies" rows="6"
 																		placeholder="List any drug allergies.."></textarea>
@@ -436,113 +457,136 @@
 																		had(Please check all that apply)</label>
 																	<div>
 																		<label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="anemia"> <span
-																			class="form-check-label">Anemia</span>
+																			class="form-check-input" type="checkbox"
+																			name="anemia"> <span class="form-check-label">Anemia</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="asthma"> <span
-																			class="form-check-label">Asthma</span>
+																			class="form-check-input" type="checkbox"
+																			name="asthma"> <span class="form-check-label">Asthma</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="arthritis"> <span
+																			class="form-check-input" type="checkbox"
+																			name="arthritis"> <span
 																			class="form-check-label">Arthritis</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="cancer"> <span
-																			class="form-check-label">Cancer</span>
+																			class="form-check-input" type="checkbox"
+																			name="cancer"> <span class="form-check-label">Cancer</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="gout"> <span
-																			class="form-check-label">Gout</span>
+																			class="form-check-input" type="checkbox" name="gout">
+																			<span class="form-check-label">Gout</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="diabetes"> <span
+																			class="form-check-input" type="checkbox"
+																			name="diabetes"> <span
 																			class="form-check-label">Diabetes</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="emotional disorder"> <span
+																			class="form-check-input" type="checkbox"
+																			name="emotional disorder"> <span
 																			class="form-check-label">Emotional Disorder</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="epilepsy seizures"> <span
+																			class="form-check-input" type="checkbox"
+																			name="epilepsy seizures"> <span
 																			class="form-check-label">Epilepsy Seizures</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="fainting spells"> <span
+																			class="form-check-input" type="checkbox"
+																			name="fainting spells"> <span
 																			class="form-check-label">Fainting Spells</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="gallstones"> <span
+																			class="form-check-input" type="checkbox"
+																			name="gallstones"> <span
 																			class="form-check-label">Gallstones</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="heart disease"> <span
+																			class="form-check-input" type="checkbox"
+																			name="heart disease"> <span
 																			class="form-check-label">Heart Disease</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="heart attack"> <span
+																			class="form-check-input" type="checkbox"
+																			name="heart attack"> <span
 																			class="form-check-label">Heart Attack</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="rheumatic fever"> <span
+																			class="form-check-input" type="checkbox"
+																			name="rheumatic fever"> <span
 																			class="form-check-label">Rheumatic fever</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="high blood pressure"> <span
+																			class="form-check-input" type="checkbox"
+																			name="high blood pressure"> <span
 																			class="form-check-label">High blood Pressure</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="digestive problems"> <span
+																			class="form-check-input" type="checkbox"
+																			name="digestive problems"> <span
 																			class="form-check-label">Digestive Problems</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="ulcerative colitis"> <span
+																			class="form-check-input" type="checkbox"
+																			name="ulcerative colitis"> <span
 																			class="form-check-label">Ulcerative Colitis</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="ulcer disease"> <span
+																			class="form-check-input" type="checkbox"
+																			name="ulcer disease"> <span
 																			class="form-check-label">Ulcer Disease</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="hepatitis"> <span
+																			class="form-check-input" type="checkbox"
+																			name="hepatitis"> <span
 																			class="form-check-label">Hepatitis</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="kidney disease"> <span
+																			class="form-check-input" type="checkbox"
+																			name="kidney disease"> <span
 																			class="form-check-label">Kidney Disease</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="liver disease"> <span
+																			class="form-check-input" type="checkbox"
+																			name="liver disease"> <span
 																			class="form-check-label">Liver Disease</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="sleep apnea"> <span
+																			class="form-check-input" type="checkbox"
+																			name="sleep apnea"> <span
 																			class="form-check-label">Sleep Apnea</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="use a c-pap machine"> <span
+																			class="form-check-input" type="checkbox"
+																			name="use a c-pap machine"> <span
 																			class="form-check-label">Use a C-PAP Machine</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="thyroid problems"> <span
+																			class="form-check-input" type="checkbox"
+																			name="thyroid problems"> <span
 																			class="form-check-label">Thyroid Problems</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="tuberculosis"> <span
+																			class="form-check-input" type="checkbox"
+																			name="tuberculosis"> <span
 																			class="form-check-label">Tuberculosis</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="venereal disease"> <span
+																			class="form-check-input" type="checkbox"
+																			name="venereal disease"> <span
 																			class="form-check-label">Venereal Disease</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="neurological disorders"> <span
+																			class="form-check-input" type="checkbox"
+																			name="neurological disorders"> <span
 																			class="form-check-label">Neurological
 																				Disorders</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="bleeding disorders"> <span
+																			class="form-check-input" type="checkbox"
+																			name="bleeding disorders"> <span
 																			class="form-check-label">Bleeding Disorders</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="lung disease"> <span
+																			class="form-check-input" type="checkbox"
+																			name="lung disease"> <span
 																			class="form-check-label">Lung Disease</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="checkbox" name="emphysema"> <span
+																			class="form-check-input" type="checkbox"
+																			name="emphysema"> <span
 																			class="form-check-label">Emphysema</span>
 																		</label>
 																	</div>
 																</div>
 																<div class="mb-3">
 																	<label class="form-label">Other Illnesses</label> <input
-																		type="text" class="form-control" name="other illnesses"
-																		placeholder="Enter name">
+																		type="text" class="form-control"
+																		name="other illnesses" placeholder="Enter name">
 																</div>
 																<div class="mb-3">
 																	<label class="form-label">Please list any
-																		Operations and Dates of Each
-																	</label>
+																		Operations and Dates of Each </label>
 																	<textarea class="form-control"
 																		name="listAnyOperationsAndDatesOfEach" rows="6"
 																		placeholder="List any operations and dates of each.."></textarea>
 																</div>
 																<div class="mb-3">
 																	<label class="form-label">Please list your
-																		Current Medications
-																	</label>
+																		Current Medications </label>
 																	<textarea class="form-control"
 																		name="listYourCurrentMedications" rows="6"
 																		placeholder="List your current medications.."></textarea>
@@ -557,18 +601,19 @@
 																	<div class="form-label">Exercise</div>
 																	<div>
 																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="Never">
-																			<span class="form-check-label">Never</span>
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="Never"> <span class="form-check-label">Never</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="1-2 days"> <span
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="1-2 days"> <span
 																			class="form-check-label">1-2 days</span>
-																		</label>
-																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="3-4 days"> <span
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="3-4 days"> <span
 																			class="form-check-label">3-4 days</span>
-																		</label>
-																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="5+ days"> <span
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="5+ days"> <span
 																			class="form-check-label">5+ days</span>
 																		</label>
 																	</div>
@@ -577,15 +622,18 @@
 																	<div class="form-label">Eating following a diet</div>
 																	<div>
 																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="I have a loose diet">
-																			<span class="form-check-label">I have a loose diet</span>
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="I have a loose diet"> <span
+																			class="form-check-label">I have a loose diet</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="I have a strict diet"> <span
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="I have a strict diet"> <span
 																			class="form-check-label">I have a strict diet</span>
-																		</label>
-																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="I don't have a diet plan"> <span
-																			class="form-check-label">I don't have a diet plan</span>
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="I don't have a diet plan"> <span
+																			class="form-check-label">I don't have a diet
+																				plan</span>
 																		</label>
 																	</div>
 																</div>
@@ -593,18 +641,20 @@
 																	<div class="form-label">Alcohol Consumption</div>
 																	<div>
 																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="I don't drink">
-																			<span class="form-check-label">I don't drink</span>
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="I don't drink"> <span
+																			class="form-check-label">I don't drink</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="1-2 glasses/day"> <span
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="1-2 glasses/day"> <span
 																			class="form-check-label">1-2 glasses/day</span>
-																		</label>
-																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="3-4 glasses/day"> <span
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="3-4 glasses/day"> <span
 																			class="form-check-label">3-4 glasses/day</span>
-																		</label>
-																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="5+ glasses/day"> <span
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="5+ glasses/day"> <span
 																			class="form-check-label">5+ glasses/day</span>
 																		</label>
 																	</div>
@@ -613,18 +663,20 @@
 																	<div class="form-label">Caffeine Consumption</div>
 																	<div>
 																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="I don't use caffeine">
-																			<span class="form-check-label">I don't use caffeine</span>
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="I don't use caffeine"> <span
+																			class="form-check-label">I don't use caffeine</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="1-2 cups/day"> <span
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="1-2 cups/day"> <span
 																			class="form-check-label">1-2 cups/day</span>
-																		</label>
-																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="3-4 cups/day"> <span
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="3-4 cups/day"> <span
 																			class="form-check-label">3-4 cups/day</span>
-																		</label>
-																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="5+ cups/day"> <span
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="5+ cups/day"> <span
 																			class="form-check-label">5+ cups/day</span>
 																		</label>
 																	</div>
@@ -633,33 +685,41 @@
 																	<div class="form-label">Do you smoke?</div>
 																	<div>
 																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="No">
-																			<span class="form-check-label">No</span>
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="No"> <span class="form-check-label">No</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="0-1 pack/day"> <span
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="0-1 pack/day"> <span
 																			class="form-check-label">0-1 pack/day</span>
-																		</label>
-																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="1-2 packs/day"> <span
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="1-2 packs/day"> <span
 																			class="form-check-label">1-2 packs/day</span>
-																		</label>
-																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise" value="2+ packs/day"> <span
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="Exercise"
+																			value="2+ packs/day"> <span
 																			class="form-check-label">2+ packs/day</span>
 																		</label>
 																	</div>
 																</div>
 																<div class="mb-3">
-																	<label class="form-label">Include other comments regarding your Medical History
-																	</label>
+																	<label class="form-label">Include other
+																		comments regarding your Medical History </label>
 																	<textarea class="form-control"
-																		name="includeOtherCommentsRegardingYourMedicalHistory" rows="6"
-																		placeholder="List your current medications.."></textarea>
+																		name="includeOtherCommentsRegardingYourMedicalHistory"
+																		rows="6" placeholder="List your current medications.."></textarea>
 																</div>
 																<div class="form-footer">
 																	<button type="submit" class="btn btn-primary">Submit</button>
 																</div>
 															</form>
+
+															<%
+															}
+															} catch (Exception e) {
+															System.out.println(e);
+															}
+															%>
 														</div>
 													</div>
 												</div>
