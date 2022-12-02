@@ -201,7 +201,7 @@
 									<input type="hidden" class="form-control" name="id" value="<%out.println(id); %>">
 									<div class="mb-3">
                                            <label class="form-label">Patient Registration ID</label>
-                                           <input type="text" class="form-control" name="patientRegistrationId" value="<%out.println(Integer.sum(id, 100000)); %>">
+                                           <input type="text" class="form-control" name="patientRegistrationId" value="<%out.println(Integer.sum(id, 100000)); %>" disabled>
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">Name</label>
