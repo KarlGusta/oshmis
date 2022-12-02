@@ -222,11 +222,16 @@
 															<!-- End of Product ID -->
 
 															<form>
+															<div class="mb-3">
+																	<label class="form-label">Patient Registration number</label> <input
+																		type="text" class="form-control" name="registrationNumber"
+																		placeholder="Enter name" value="registrationNumber" disabled>
+																</div>
 																<div class="form-group mb-3 ">
 																	<label class="form-label">Patient Gender *</label>
 																	<div>
 																		<select class="form-select" disabled>
-																			<option value="<%=theResultSet.getString(6) %>"><%=theResultSet.getString(6) %></option>
+																			<option value="<%=theResultSet.getString(7) %>"><%=theResultSet.getString(7) %></option>
 																			<option value="Male">Male</option>
 																			<option value="Female">Female</option>
 																		</select>
@@ -235,7 +240,7 @@
 																<div class="mb-3">
 																	<label class="form-label">Name</label> <input
 																		type="text" class="form-control" name="name"
-																		placeholder="Enter name" value="<%=theResultSet.getString(2) %>" disabled>
+																		placeholder="Enter name" value="<%=theResultSet.getString(3) %>" disabled>
 																</div>
 																<div class="mb-3">
 																	<label class="form-label">Patient's Date of
@@ -244,7 +249,7 @@
 																		<div class="col-5">
 																			<select name="monthOfBirth" class="form-select" disabled>
 																				<option value="">Month</option>
-																				<option selected="selected" value="<%=theResultSet.getString(3) %>"><%=theResultSet.getString(3) %></option>
+																				<option selected="selected" value="<%=theResultSet.getString(4) %>"><%=theResultSet.getString(4) %></option>
 																				<option value="1">January</option>
 																				<option value="2">February</option>
 																				<option value="3">March</option>
@@ -262,7 +267,7 @@
 																		<div class="col-3">
 																			<select name="dateOfBirth" class="form-select" disabled>
 																				<option value="">Day</option>
-																				<option value="<%=theResultSet.getString(4) %>"><%=theResultSet.getString(4) %></option>
+																				<option value="<%=theResultSet.getString(5) %>"><%=theResultSet.getString(5) %></option>
 																				<option value="1">1</option>
 																				<option value="2">2</option>
 																				<option value="3">3</option>
@@ -299,7 +304,7 @@
 																		<div class="col-4">
 																			<select name="yearOfBirth" class="form-select" disabled>
 																				<option value="">Year</option>
-																				<option value="<%=theResultSet.getString(5) %>"><%=theResultSet.getString(5) %></option>
+																				<option value="<%=theResultSet.getString(6) %>"><%=theResultSet.getString(6) %></option>
 																				<option value="2014">2014</option>
 																				<option value="2013">2013</option>
 																				<option value="2012">2012</option>

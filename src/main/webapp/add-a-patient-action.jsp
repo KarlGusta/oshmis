@@ -6,6 +6,7 @@
 <%
     // Get the data from the form
     String id = request.getParameter("id");
+	String patientRegistrationId = request.getParameter("patientRegistrationId");
     String name = request.getParameter("name");
 	String monthOfBirth = request.getParameter("monthOfBirth");
 	String dateOfBirth = request.getParameter("dateOfBirth");
@@ -20,6 +21,9 @@
 	String modeOfPayment = request.getParameter("modeOfPayment");
 	String insuranceProvider = request.getParameter("insuranceProvider");
 	
+	System.out.println(id);
+	System.out.println(patientRegistrationId);
+	
 	// Try catch to catch any errors
 	try
 	{
@@ -27,23 +31,24 @@
 		Connection connectionToTheDB = ConnectionProvider.getCon();
 		
 		// Prepared statement to insert
-		PreparedStatement thePreparedStatement = connectionToTheDB.prepareStatement("insert into patients values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		PreparedStatement thePreparedStatement = connectionToTheDB.prepareStatement("insert into patients values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		
 		// Set the values to the one collected in the variables from the form to the ones in the DB
 		thePreparedStatement.setString(1, id);
-		thePreparedStatement.setString(2, name);
-		thePreparedStatement.setString(3, monthOfBirth);
-		thePreparedStatement.setString(4, dateOfBirth);
-		thePreparedStatement.setString(5, yearOfBirth);
-		thePreparedStatement.setString(6, gender);
-		thePreparedStatement.setString(7, location);
-		thePreparedStatement.setString(8, addALocation);
-		thePreparedStatement.setString(9, idNumber);
-		thePreparedStatement.setString(10, phoneNumber);
-		thePreparedStatement.setString(11, nextOfKinName);
-		thePreparedStatement.setString(12, nextOfKinPhoneNumber);
-		thePreparedStatement.setString(13, modeOfPayment);
-		thePreparedStatement.setString(14, insuranceProvider);
+		thePreparedStatement.setString(2, patientRegistrationId);
+		thePreparedStatement.setString(3, name);
+		thePreparedStatement.setString(4, monthOfBirth);
+		thePreparedStatement.setString(5, dateOfBirth);
+		thePreparedStatement.setString(6, yearOfBirth);
+		thePreparedStatement.setString(7, gender);
+		thePreparedStatement.setString(8, location);
+		thePreparedStatement.setString(9, addALocation);
+		thePreparedStatement.setString(10, idNumber);
+		thePreparedStatement.setString(11, phoneNumber);
+		thePreparedStatement.setString(12, nextOfKinName);
+		thePreparedStatement.setString(13, nextOfKinPhoneNumber);
+		thePreparedStatement.setString(14, modeOfPayment);
+		thePreparedStatement.setString(15, insuranceProvider);
 		
 		// This will execute ad update the data
 		thePreparedStatement.executeUpdate();

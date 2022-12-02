@@ -156,15 +156,15 @@
 						    	Statement theStatement = theConnectionToTheDB.createStatement();
 						    	
 						    	ResultSet theResultSet = theStatement.executeQuery("select max(id) from patients");
+						    	
 						    	while(theResultSet.next())
 						    	{
 						    		// First, we are getting the id from the DB
 						    		id = theResultSet.getInt(1);
-						    		
+						    	
 						    		// Increment the ID by 1. 
 						    		id = id + 1;
-						    		
-						    		
+   		
 						    	}
 						    }
 						    catch(Exception e)
@@ -199,6 +199,10 @@
                                     <!-- End of success or error message -->
 									<h2 class="card-title text-center mb-4">Registry's Add a Patient Form</h2>
 									<input type="hidden" class="form-control" name="id" value="<%out.println(id); %>">
+									<div class="mb-3">
+                                           <label class="form-label">Patient Registration ID</label>
+                                           <input type="text" class="form-control" name="patientRegistrationId" value="<%out.println(Integer.sum(id, 100000)); %>">
+                                    </div>
                                     <div class="mb-3">
                                            <label class="form-label">Name</label>
                                            <input type="text" class="form-control" name="name" placeholder="Enter name">
@@ -404,7 +408,7 @@
 									</div>
 									<div class="mb-3">
                                            <label class="form-label"> Add a Location</label>
-                                           <input type="text" class="form-control" name="addAlocation" placeholder="Enter location">
+                                           <input type="text" class="form-control" name="addAlocation" placeholder="Enter location" value="test">
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">ID Number</label>
