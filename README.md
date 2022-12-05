@@ -53,6 +53,8 @@ The project will be setup using the following steps:
 The patient management module will be able to do the following:
 
 * Add a patient
+![Add a patient](https://user-images.githubusercontent.com/33565767/205575757-1047bab1-f4f3-4367-b8f3-b415ecc9cfc0.png)
+
 * Edit a patient
 * Delete a patient
 * View a patient
