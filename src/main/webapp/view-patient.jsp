@@ -606,18 +606,18 @@
 																	<div class="form-label">Exercise</div>
 																	<div>
 																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="exercise"
 																			value="Never"> <span class="form-check-label">Never</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="exercise"
 																			value="1-2 days"> <span
 																			class="form-check-label">1-2 days</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="exercise"
 																			value="3-4 days"> <span
 																			class="form-check-label">3-4 days</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="exercise"
 																			value="5+ days"> <span
 																			class="form-check-label">5+ days</span>
 																		</label>
@@ -627,15 +627,15 @@
 																	<div class="form-label">Eating following a diet</div>
 																	<div>
 																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="eatingFollowingADiet"
 																			value="I have a loose diet"> <span
 																			class="form-check-label">I have a loose diet</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="eatingFollowingADiet"
 																			value="I have a strict diet"> <span
 																			class="form-check-label">I have a strict diet</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="eatingFollowingADiet"
 																			value="I don't have a diet plan"> <span
 																			class="form-check-label">I don't have a diet
 																				plan</span>
@@ -646,19 +646,19 @@
 																	<div class="form-label">Alcohol Consumption</div>
 																	<div>
 																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="alcoholConsumption"
 																			value="I don't drink"> <span
 																			class="form-check-label">I don't drink</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="alcoholConsumption"
 																			value="1-2 glasses/day"> <span
 																			class="form-check-label">1-2 glasses/day</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="alcoholConsumption"
 																			value="3-4 glasses/day"> <span
 																			class="form-check-label">3-4 glasses/day</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="alcoholConsumption"
 																			value="5+ glasses/day"> <span
 																			class="form-check-label">5+ glasses/day</span>
 																		</label>
@@ -668,19 +668,19 @@
 																	<div class="form-label">Caffeine Consumption</div>
 																	<div>
 																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="caffeineConsumption"
 																			value="I don't use caffeine"> <span
 																			class="form-check-label">I don't use caffeine</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="caffeineConsumption"
 																			value="1-2 cups/day"> <span
 																			class="form-check-label">1-2 cups/day</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="caffeineConsumption"
 																			value="3-4 cups/day"> <span
 																			class="form-check-label">3-4 cups/day</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="caffeineConsumption"
 																			value="5+ cups/day"> <span
 																			class="form-check-label">5+ cups/day</span>
 																		</label>
@@ -690,18 +690,18 @@
 																	<div class="form-label">Do you smoke?</div>
 																	<div>
 																		<label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="doYouSmoke"
 																			value="No"> <span class="form-check-label">No</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="doYouSmoke"
 																			value="0-1 pack/day"> <span
 																			class="form-check-label">0-1 pack/day</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="doYouSmoke"
 																			value="1-2 packs/day"> <span
 																			class="form-check-label">1-2 packs/day</span>
 																		</label> <label class="form-check"> <input
-																			class="form-check-input" type="radio" name="Exercise"
+																			class="form-check-input" type="radio" name="doYouSmoke"
 																			value="2+ packs/day"> <span
 																			class="form-check-label">2+ packs/day</span>
 																		</label>

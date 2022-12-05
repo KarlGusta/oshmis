@@ -46,6 +46,15 @@
 	String emphysema = request.getParameter("emphysema");
 	String otherIllnesses = request.getParameter("otherIllnesses");
 	String listAnyOperationsAndDatesOfEach = request.getParameter("listAnyOperationsAndDatesOfEach");
+	String listYourCurrentMedications = request.getParameter("listYourCurrentMedications");
+	String exercise = request.getParameter("exercise");
+	String eatingFollowingADiet = request.getParameter("eatingFollowingADiet");
+	String alcoholConsumption = request.getParameter("alcoholConsumption");
+	String caffeineConsumption = request.getParameter("caffeineConsumption");
+	String doYouSmoke = request.getParameter("doYouSmoke");
+	String includeOtherCommentsRegardingYourMedicalHistory = request.getParameter("includeOtherCommentsRegardingYourMedicalHistory");
+	
+	
 	
 %>
 
