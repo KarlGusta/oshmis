@@ -207,11 +207,10 @@
                       %>
                         <tr>
                           <td><%=theResultSet.getString(1) %></td>
-                          <td ><%=theResultSet.getString(3) %></td>
-                          <td class="text-muted" ><%=theResultSet.getString(10) %></td>
-                          <td class="text-muted" ><a href="#" class="text-reset"><%=theResultSet.getString(8) %></a></td>
-                          <td class="text-muted" ><%=theResultSet.getString(14) %></td>
-                          <!-- <td><a href="edit-a-patient.jsp?id=<%=theResultSet.getString(1) %>">View</a></td> -->
+                          <td ><%=theResultSet.getString(2) %></td>
+                          <td class="text-muted" ><%=theResultSet.getString(9) %></td>
+                          <td class="text-muted" ><a href="#" class="text-reset"><%=theResultSet.getString(7) %></a></td>
+                          <td class="text-muted" ><%=theResultSet.getString(13) %></td>
                           <td><a href="view-patient.jsp?id=<%=theResultSet.getString(1) %>">View</a></td>
                         </tr>
                         <%

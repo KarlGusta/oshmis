@@ -224,13 +224,13 @@
 															<form>
 															<div class="mb-3">
 																	<label class="form-label">Patient Registration number</label> <input
-																		type="text" class="form-control" name="registrationNumber"
-																		placeholder="Enter name" value="registrationNumber" disabled>
+																		type="text" class="form-control" name="patientRegistrationNumber"
+																		placeholder="Enter name" value="<%=theResultSet.getString(1) %>" disabled>
 																</div>
 																<div class="form-group mb-3 ">
 																	<label class="form-label">Patient Gender *</label>
 																	<div>
-																		<select class="form-select" disabled>
+																		<select class="form-select" name="patientGender" disabled>
 																			<option value="<%=theResultSet.getString(7) %>"><%=theResultSet.getString(7) %></option>
 																			<option value="Male">Male</option>
 																			<option value="Female">Female</option>
@@ -431,7 +431,7 @@
 																	<label class="form-label">Patient Height(in
 																		cms) *</label> <input type="text" class="form-control"
 																		name="patientHeight"
-																		placeholder="Enter patient height">
+																		placeholder="Enter patient height" disabled>
 																</div>
 																<div class="mb-3">
 																	<label class="form-label">Patient Weight(in
@@ -483,15 +483,15 @@
 																			class="form-check-label">Diabetes</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="emotional disorder"> <span
+																			name="emotionalDisorder"> <span
 																			class="form-check-label">Emotional Disorder</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="epilepsy seizures"> <span
+																			name="epilepsySeizures"> <span
 																			class="form-check-label">Epilepsy Seizures</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="fainting spells"> <span
+																			name="faintingSpells"> <span
 																			class="form-check-label">Fainting Spells</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
@@ -499,31 +499,31 @@
 																			class="form-check-label">Gallstones</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="heart disease"> <span
+																			name="heartDisease"> <span
 																			class="form-check-label">Heart Disease</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="heart attack"> <span
+																			name="heartAttack"> <span
 																			class="form-check-label">Heart Attack</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="rheumatic fever"> <span
+																			name="rheumaticFever"> <span
 																			class="form-check-label">Rheumatic fever</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="high blood pressure"> <span
+																			name="highBloodPressure"> <span
 																			class="form-check-label">High blood Pressure</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="digestive problems"> <span
+																			name="digestiveProblems"> <span
 																			class="form-check-label">Digestive Problems</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="ulcerative colitis"> <span
+																			name="ulcerativeColitis"> <span
 																			class="form-check-label">Ulcerative Colitis</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="ulcer disease"> <span
+																			name="ulcerDisease"> <span
 																			class="form-check-label">Ulcer Disease</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
@@ -531,23 +531,23 @@
 																			class="form-check-label">Hepatitis</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="kidney disease"> <span
+																			name="kidneyDisease"> <span
 																			class="form-check-label">Kidney Disease</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="liver disease"> <span
+																			name="liverDisease"> <span
 																			class="form-check-label">Liver Disease</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="sleep apnea"> <span
+																			name="sleepApnea"> <span
 																			class="form-check-label">Sleep Apnea</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="use a c-pap machine"> <span
+																			name="useACPAPMachine"> <span
 																			class="form-check-label">Use a C-PAP Machine</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="thyroid problems"> <span
+																			name="thyroidProblems"> <span
 																			class="form-check-label">Thyroid Problems</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
@@ -555,20 +555,20 @@
 																			class="form-check-label">Tuberculosis</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="venereal disease"> <span
+																			name="venerealDisease"> <span
 																			class="form-check-label">Venereal Disease</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="neurological disorders"> <span
+																			name="neurologicalDisorders"> <span
 																			class="form-check-label">Neurological
 																				Disorders</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="bleeding disorders"> <span
+																			name="bleedingDisorders"> <span
 																			class="form-check-label">Bleeding Disorders</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
-																			name="lung disease"> <span
+																			name="lungDisease"> <span
 																			class="form-check-label">Lung Disease</span>
 																		</label> <label class="form-check"> <input
 																			class="form-check-input" type="checkbox"
@@ -580,7 +580,7 @@
 																<div class="mb-3">
 																	<label class="form-label">Other Illnesses</label> <input
 																		type="text" class="form-control"
-																		name="other illnesses" placeholder="Enter name">
+																		name="otherIllnesses" placeholder="Enter name">
 																</div>
 																<div class="mb-3">
 																	<label class="form-label">Please list any

@@ -145,10 +145,10 @@
 					<div class="page page-center">
 						<div class="container-tight py-4">
 						
-						<!-- Product ID -->
+						<!-- Patient ID -->
 						<%
 						    // First id to start at one
-						    int id = 1;
+						    int id = 1; 
 						
 						    try
 						    {
@@ -163,7 +163,15 @@
 						    		id = theResultSet.getInt(1);
 						    	
 						    		// Increment the ID by 1. 
-						    		id = id + 1;
+						    		//id = id + 1;
+						    		if(id == 0) // If from the DB, there is no id
+						    		{
+						    			id = id + 10000;
+						    		}
+						    		else
+						    		{
+						    			id = id + 1; // Add only one to the next id.
+						    		}
    		
 						    	}
 						    }
@@ -172,7 +180,8 @@
 						    	System.out.println(e);
 						    }
 						%>
-						<!-- End of Product ID -->
+						<!-- End of Patient ID -->
+						
 						
 							<form class="card card-md" action="add-a-patient-action.jsp" method="post">
 								<div class="card-body">
@@ -201,8 +210,7 @@
 									<input type="hidden" class="form-control" name="id" value="<%out.println(id); %>">
 									<div class="mb-3">
                                            <label class="form-label">Patient Registration ID</label>
-                                           <!-- Patient Registration ID added 100000 to the id using the java sum function -->
-                                           <input type="text" class="form-control" name="patientRegistrationId" value="<%out.println(Integer.sum(id, 100000)); %>" disabled>
+                                           <input type="text" class="form-control" name="patientRegistrationId" id="patientRegistrationId" value="<%out.println(id); %>" disabled>
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">Name</label>
@@ -409,7 +417,7 @@
 									</div>
 									<div class="mb-3">
                                            <label class="form-label"> Add a Location</label>
-                                           <input type="text" class="form-control" name="addAlocation" placeholder="Enter location" value="test">
+                                           <input type="text" class="form-control" name="addALocation" placeholder="Enter location">
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">ID Number</label>

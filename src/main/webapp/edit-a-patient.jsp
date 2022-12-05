@@ -189,7 +189,7 @@
 									<input type="hidden" name="id" value="<% out.println(id); %>">
                                     <div class="mb-3">
                                            <label class="form-label">Name</label>
-                                           <input type="text" class="form-control" name="name" value="<%=theResultSet.getString(3) %>" placeholder="Enter name">
+                                           <input type="text" class="form-control" name="name" value="<%=theResultSet.getString(2) %>" placeholder="Enter name">
                                     </div>
 									<div class="mb-3">
 										<label class="form-label">D.O.B</label>
@@ -197,7 +197,7 @@
 											<div class="col-5">
 												<select name="monthOfBirth" class="form-select">
 													<option value="">Month</option>
-													<option value="<%=theResultSet.getString(4) %>" selected><%=theResultSet.getString(4) %></option>
+													<option value="<%=theResultSet.getString(3) %>" selected><%=theResultSet.getString(3) %></option>
 													<option value="1">January</option>
 													<option value="2">February</option>
 													<option value="3">March</option>
@@ -215,7 +215,7 @@
 											<div class="col-3">
 												<select name="dateOfBirth" class="form-select">
 													<option value="">Day</option>
-													<option value="<%=theResultSet.getString(5) %>" selected><%=theResultSet.getString(5) %></option>
+													<option value="<%=theResultSet.getString(4) %>" selected><%=theResultSet.getString(4) %></option>
 													<option value="1">1</option>
 													<option value="2">2</option>
 													<option value="3">3</option>
@@ -252,7 +252,7 @@
 											<div class="col-4">
 												<select name="yearOfBirth" class="form-select">
 													<option value="">Year</option>
-													<option value="<%=theResultSet.getString(6) %>"><%=theResultSet.getString(6) %></option>
+													<option value="<%=theResultSet.getString(5) %>"><%=theResultSet.getString(5) %></option>
 													<option value="2014">2014</option>
 													<option value="2013">2013</option>
 													<option value="2012">2012</option>
