@@ -207,7 +207,7 @@
 														</div>
 														<div class="card-body">
 
-															<!-- Product ID -->
+															<!-- Patient ID -->
 															<%
 															// Get the id from the URL
 															String id = request.getParameter("id");
@@ -219,37 +219,44 @@
 																ResultSet theResultSet = theStatement.executeQuery("select * from patients where id='" + id + "'");
 																while (theResultSet.next()) {
 															%>
-															<!-- End of Product ID -->
+															<!-- End of Patient ID -->
 
-															<form>
+															<form action="view-patient-action.jsp" method="post">
 															<div class="mb-3">
-																	<label class="form-label">Patient Registration number</label> <input
-																		type="text" class="form-control" name="patientRegistrationNumber"
-																		placeholder="Enter name" value="<%=theResultSet.getString(1) %>" disabled>
+																	<label class="form-label">Patient Registration number</label> 
+																	<input type="text" class="form-control" placeholder="Patient Registration Number" value="<%=theResultSet.getString(1) %>" disabled>
+																	
+																	<!-- This hidden input helps persist the data so that it doesn't send NULL -->	
+																	<input type="hidden" name="patientRegistrationNumber" value="<%=theResultSet.getString(1) %>">
 																</div>
 																<div class="form-group mb-3 ">
 																	<label class="form-label">Patient Gender *</label>
 																	<div>
-																		<select class="form-select" name="patientGender" disabled>
-																			<option value="<%=theResultSet.getString(7) %>"><%=theResultSet.getString(7) %></option>
+																		<select class="form-select" disabled>
+																			<option value="<%=theResultSet.getString(6) %>"><%=theResultSet.getString(6) %></option>
 																			<option value="Male">Male</option>
 																			<option value="Female">Female</option>
 																		</select>
+																		
+																	<!-- This hidden input helps persist the data so that it doesn't send NULL -->	
+																	<input type="hidden" name="patientGender" value="<%=theResultSet.getString(6) %>">
 																	</div>
 																</div>
 																<div class="mb-3">
-																	<label class="form-label">Name</label> <input
-																		type="text" class="form-control" name="name"
-																		placeholder="Enter name" value="<%=theResultSet.getString(3) %>" disabled>
+																	<label class="form-label">Name</label> 
+																	<input type="text" class="form-control" placeholder="Enter name" value="<%=theResultSet.getString(2) %>" disabled>
+																		
+																	<!-- This hidden input helps persist the data so that it doesn't send NULL -->	
+																	<input type="hidden" name="name" value="<%=theResultSet.getString(2) %>">
 																</div>
 																<div class="mb-3">
 																	<label class="form-label">Patient's Date of
 																		Birth</label>
 																	<div class="row g-2">
 																		<div class="col-5">
-																			<select name="monthOfBirth" class="form-select" disabled>
+																			<select class="form-select" disabled>
 																				<option value="">Month</option>
-																				<option selected="selected" value="<%=theResultSet.getString(4) %>"><%=theResultSet.getString(4) %></option>
+																				<option selected="selected" value="<%=theResultSet.getString(3) %>"><%=theResultSet.getString(3) %></option>
 																				<option value="1">January</option>
 																				<option value="2">February</option>
 																				<option value="3">March</option>
@@ -263,11 +270,13 @@
 																				<option value="11">November</option>
 																				<option value="12">December</option>
 																			</select>
+																			<!-- This hidden input helps persist the data so that it doesn't send NULL -->	
+																	        <input type="hidden" name="monthOfBirth" value="<%=theResultSet.getString(3) %>">
 																		</div>
 																		<div class="col-3">
 																			<select name="dateOfBirth" class="form-select" disabled>
 																				<option value="">Day</option>
-																				<option value="<%=theResultSet.getString(5) %>"><%=theResultSet.getString(5) %></option>
+																				<option value="<%=theResultSet.getString(4) %>"><%=theResultSet.getString(4) %></option>
 																				<option value="1">1</option>
 																				<option value="2">2</option>
 																				<option value="3">3</option>
@@ -300,11 +309,13 @@
 																				<option value="30">30</option>
 																				<option value="31">31</option>
 																			</select>
+																			<!-- This hidden input helps persist the data so that it doesn't send NULL -->	
+																	        <input type="hidden" name="dateOfBirth" value="<%=theResultSet.getString(4) %>">
 																		</div>
 																		<div class="col-4">
 																			<select name="yearOfBirth" class="form-select" disabled>
 																				<option value="">Year</option>
-																				<option value="<%=theResultSet.getString(6) %>"><%=theResultSet.getString(6) %></option>
+																				<option value="<%=theResultSet.getString(5) %>"><%=theResultSet.getString(5) %></option>
 																				<option value="2014">2014</option>
 																				<option value="2013">2013</option>
 																				<option value="2012">2012</option>
@@ -424,6 +435,8 @@
 																				<option value="1898">1898</option>
 																				<option value="1897">1897</option>
 																			</select>
+																			<!-- This hidden input helps persist the data so that it doesn't send NULL -->	
+																	        <input type="hidden" name="yearOfBirth" value="<%=theResultSet.getString(5) %>">
 																		</div>
 																	</div>
 																</div>
@@ -431,7 +444,7 @@
 																	<label class="form-label">Patient Height(in
 																		cms) *</label> <input type="text" class="form-control"
 																		name="patientHeight"
-																		placeholder="Enter patient height" disabled>
+																		placeholder="Enter patient height">
 																</div>
 																<div class="mb-3">
 																	<label class="form-label">Patient Weight(in
@@ -442,7 +455,7 @@
 																<div class="mb-3">
 																	<label class="form-label">Reasons for seeing
 																		the doctor *</label> <input type="text" class="form-control"
-																		name="reasonsForSeeingTheDoctor"
+																		name="reasonForSeeingTheDoctor"
 																		placeholder="Enter the reasons for seeing the doctor">
 																</div>
 																<br />
@@ -718,7 +731,6 @@
 																	<button type="submit" class="btn btn-primary">Submit</button>
 																</div>
 															</form>
-
 															<%
 															}
 															} catch (Exception e) {

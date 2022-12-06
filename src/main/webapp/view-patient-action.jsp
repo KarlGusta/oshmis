@@ -11,9 +11,9 @@
 	String monthOfBirth = request.getParameter("monthOfBirth");
 	String dateOfBirth = request.getParameter("dateOfBirth");
 	String yearOfBirth = request.getParameter("yearOfBirth");
-	String patientHeight = "";
-	String patientWeight = "";
-	String reasonsForSeeingTheDoctor = request.getParameter("reasonsForSeeingTheDoctor");
+	String patientHeight = request.getParameter("patientHeight");
+	String patientWeight = request.getParameter("patientWeight");
+	String reasonForSeeingTheDoctor = request.getParameter("reasonForSeeingTheDoctor");
 	String listAnyDrugAllergies = request.getParameter("listAnyDrugAllergies");
 	String anemia = request.getParameter("anemia");
 	String asthma = request.getParameter("asthma");
@@ -54,59 +54,90 @@
 	String doYouSmoke = request.getParameter("doYouSmoke");
 	String includeOtherCommentsRegardingYourMedicalHistory = request.getParameter("includeOtherCommentsRegardingYourMedicalHistory");
 	
+	System.out.println(patientRegistrationNumber);
 	
-	
-%>
-
-<%
-    // Get the data from the form
-    String id = request.getParameter("id");
-    String name = request.getParameter("name");
-	String monthOfBirth = request.getParameter("monthOfBirth");
-	String dateOfBirth = request.getParameter("dateOfBirth");
-	String yearOfBirth = request.getParameter("yearOfBirth");
-	String gender = request.getParameter("gender");
-	String location = request.getParameter("location");
-	String addALocation = request.getParameter("addALocation");
-	String idNumber = request.getParameter("idNumber");
-	String phoneNumber = request.getParameter("phoneNumber");
-	String nextOfKinName = request.getParameter("nextOfKinName");
-	String nextOfKinPhoneNumber = request.getParameter("nextOfKinPhoneNumber");
-	String modeOfPayment = request.getParameter("modeOfPayment");
-	String insuranceProvider = request.getParameter("insuranceProvider");
-	
-	System.out.println(id);
-	
-	// Try catch to catch any errors
 	try
 	{
 		// Connection to the DB
 		Connection connectionToTheDB = ConnectionProvider.getCon();
 		
 		// Prepared statement to insert
-		PreparedStatement thePreparedStatement = connectionToTheDB.prepareStatement("insert into patients values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		PreparedStatement thePreparedStatement = connectionToTheDB.prepareStatement("insert into generalPatientInformation values(?,?,?,?,?,?,?,?,?)");
 		
 		// Set the values to the one collected in the variables from the form to the ones in the DB
-		thePreparedStatement.setString(1, id);
-		thePreparedStatement.setString(2, name);
-		thePreparedStatement.setString(3, monthOfBirth);
-		thePreparedStatement.setString(4, dateOfBirth);
-		thePreparedStatement.setString(5, yearOfBirth);
-		thePreparedStatement.setString(6, gender);
-		thePreparedStatement.setString(7, location);
-		thePreparedStatement.setString(8, addALocation);
-		thePreparedStatement.setString(9, idNumber);
-		thePreparedStatement.setString(10, phoneNumber);
-		thePreparedStatement.setString(11, nextOfKinName);
-		thePreparedStatement.setString(12, nextOfKinPhoneNumber);
-		thePreparedStatement.setString(13, modeOfPayment);
-		thePreparedStatement.setString(14, insuranceProvider);
+		thePreparedStatement.setString(1, patientRegistrationNumber);
+		thePreparedStatement.setString(2, patientGender);
+		thePreparedStatement.setString(3, name);
+		thePreparedStatement.setString(4, monthOfBirth);
+		thePreparedStatement.setString(5, dateOfBirth);
+		thePreparedStatement.setString(6, yearOfBirth);
+		thePreparedStatement.setString(7, patientHeight);
+		thePreparedStatement.setString(8, patientWeight);
+		thePreparedStatement.setString(9, reasonForSeeingTheDoctor);
 		
-		// This will execute ad update the data
+		// This will execute and update the records
 		thePreparedStatement.executeUpdate();
 		
+		// Prepared statement to insert two
+		PreparedStatement thePreparedStatementTwo = connectionToTheDB.prepareStatement("insert into patientMedicalHistory values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		
+		// Set the values to the one collected in the variables from the form to the ones in the DB
+		thePreparedStatementTwo.setString(1,patientRegistrationNumber);
+		thePreparedStatementTwo.setString(2, listAnyDrugAllergies);
+		thePreparedStatementTwo.setString(3, anemia);
+		thePreparedStatementTwo.setString(4, asthma);
+		thePreparedStatementTwo.setString(5, arthritis);
+		thePreparedStatementTwo.setString(6, cancer);
+		thePreparedStatementTwo.setString(7, gout);
+		thePreparedStatementTwo.setString(8, diabetes);
+		thePreparedStatementTwo.setString(9, emotionalDisorder);
+		thePreparedStatementTwo.setString(10, epilepsySeizures);
+		thePreparedStatementTwo.setString(11, faintingSpells);
+		thePreparedStatementTwo.setString(12, gallstones);
+		thePreparedStatementTwo.setString(13, heartDisease);
+		thePreparedStatementTwo.setString(14, heartAttack);
+		thePreparedStatementTwo.setString(15, rheumaticFever);
+		thePreparedStatementTwo.setString(16, highBloodPressure);
+		thePreparedStatementTwo.setString(17, digestiveProblems);
+		thePreparedStatementTwo.setString(18, ulcerativeColitis);
+		thePreparedStatementTwo.setString(19, ulcerDisease);
+		thePreparedStatementTwo.setString(20, hepatitis);
+		thePreparedStatementTwo.setString(21, kidneyDisease);
+		thePreparedStatementTwo.setString(22, liverDisease);
+		thePreparedStatementTwo.setString(23, sleepApnea);
+		thePreparedStatementTwo.setString(24, useACPAPMachine);
+		thePreparedStatementTwo.setString(25, thyroidProblems);
+		thePreparedStatementTwo.setString(26, tuberculosis);
+		thePreparedStatementTwo.setString(27, venerealDisease);
+		thePreparedStatementTwo.setString(28, neurologicalDisorders);
+		thePreparedStatementTwo.setString(29, bleedingDisorders);
+		thePreparedStatementTwo.setString(30, lungDisease);
+		thePreparedStatementTwo.setString(31, emphysema);
+		thePreparedStatementTwo.setString(32, otherIllnesses);
+		thePreparedStatementTwo.setString(33, listAnyOperationsAndDatesOfEach);
+		thePreparedStatementTwo.setString(34, listYourCurrentMedications);
+		
+		// This will execute and update the records
+		thePreparedStatementTwo.executeUpdate();
+		
+		
+		// Prepared statement to insert Three
+		PreparedStatement thePreparedStatementThree = connectionToTheDB.prepareStatement("insert into healthyAndUnhealthyHabits values(?,?,?,?,?,?,?)");
+		
+		// Set the values to the one collected in the variables from the form to the ones in the DB
+		thePreparedStatementThree.setString(1, patientRegistrationNumber);
+		thePreparedStatementThree.setString(2, exercise);
+		thePreparedStatementThree.setString(3, eatingFollowingADiet);
+		thePreparedStatementThree.setString(4, alcoholConsumption);
+		thePreparedStatementThree.setString(5, caffeineConsumption);
+		thePreparedStatementThree.setString(6, doYouSmoke);
+		thePreparedStatementThree.setString(7, includeOtherCommentsRegardingYourMedicalHistory);
+		
+		// This will execute and update the records
+		thePreparedStatementThree.executeUpdate();
+		
 		// Send the response to our page. Msg is the variable we are passing the data
-		response.sendRedirect("add-a-patient.jsp?msg=valid");
+		response.sendRedirect("all-patients-view-patients.jsp?msg=valid");
 	}
 	catch(Exception e)
 	{
@@ -114,7 +145,7 @@
 		System.out.println(e);
 		
 		// Send a response to our page of invalid if it did not succeed.
-		response.sendRedirect("add-a-patient.jsp?msg=invalid");
+		response.sendRedirect("all-patients-view-patients.jsp?msg=invalid");
 	}
 	
 %>
