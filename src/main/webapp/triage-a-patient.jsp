@@ -9,7 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-<title>OSHMIS - View a Patient</title>
+<title>OSHMIS - Triage a Patient</title>
 <!-- CSS files -->
 <link href="./dist/css/tabler.min.css" rel="stylesheet" />
 <link href="./dist/css/tabler-flags.min.css" rel="stylesheet" />
@@ -66,7 +66,7 @@
 											patient </a> <a class="dropdown-item"
 											href="all-patients-edit-patients.jsp"> All patients and
 											edit patient </a>
-											<a class="dropdown-item" href="triage.jsp">Triage a patient</a>
+											<a class="dropdown-item" href="triage.jsp">Triage a patient</a> 
 											<a class="dropdown-item"
 											href="all-patients-view-patients.jsp"> All patients and
 											view patient </a>
@@ -169,7 +169,7 @@
 				<div class="page-header d-print-none">
 					<div class="row g-2 align-items-center">
 						<div class="col">
-							<h2 class="page-title">View Patient</h2>
+							<h2 class="page-title">Triage a Patient</h2>
 						</div>
 					</div>
 				</div>
@@ -181,10 +181,10 @@
 							<div class="card">
 								<ul class="nav nav-tabs" data-bs-toggle="tabs">
 									<li class="nav-item"><a href="#tabs-home-7"
-										class="nav-link active" data-bs-toggle="tab">Patient
+										class="nav-link active" data-bs-toggle="tab">Patient Triage
 											History</a></li>
 									<li class="nav-item"><a href="#tabs-profile-7"
-										class="nav-link" data-bs-toggle="tab">Previous patient
+										class="nav-link" data-bs-toggle="tab">Previous Patient Triage
 											History</a></li>
 									<li class="nav-item ms-auto"><a href="#tabs-settings-7"
 										class="nav-link" title="Settings" data-bs-toggle="tab"> <!-- Download SVG icon from http://tabler-icons.io/i/settings -->
