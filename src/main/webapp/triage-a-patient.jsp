@@ -465,6 +465,71 @@
 																</div>
 																<div class="dropdown-divider"></div>
 																<div class="mb-3">
+																	<div class="form-label">Danger signs*</div>
+																	<div>
+																		<label class="form-check"> <input
+																			class="form-check-input" type="radio" name="lethargicOrUnconscious"
+																			value="lethargicOrUnconscious"> <span class="form-check-label">Lethargic or unconscious</span>
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="absentOrWeakPulse"
+																			value="absentOrWeakPulse"> <span
+																			class="form-check-label">Absent or weak pulse</span>
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="respiratoryDistress"
+																			value="respiratoryDistress"> <span
+																			class="form-check-label">Respiratory Distress</span>
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="notAbleToDrinkOrDrinksPoorly"
+																			value="notAbleToDrinkOrDrinksPoorly"> <span class="form-check-label">Not able to drink or drinks poorly</span>
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="sunkenEyes"
+																			value="sunkenEyes"> <span
+																			class="form-check-label">Sunken eyes</span>
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="skinPinchGoesBackSlowly"
+																			value="skinPinchGoesBackSlowly"> <span
+																			class="form-check-label">Skin pinch goes back slowly</span>
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="irritableAndRestless"
+																			value="irritableAndRestless"> <span
+																			class="form-check-label">Irritable and restless</span>
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="rapidPulse"
+																			value="rapidPulse"> <span
+																			class="form-check-label">Rapid pulse</span>
+																		</label><label class="form-check"> <input
+																			class="form-check-input" type="radio" name="thirstyDrinksEagerly"
+																			value="thirstyDrinksEagerly"> <span
+																			class="form-check-label">Thirsty, drinks eagerly</span>
+																		</label>
+																	</div>
+																</div>
+																<div class="mb-3">
+																	<div class="form-label">Signs*</div>
+																	<div>
+																		<label class="form-check"> <input
+																			class="form-check-input" type="radio" name="awakeAndAlert"
+																			value="awakeAndAlert"> <span class="form-check-label">Awake and alert</span>
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="normalPulse"
+																			value="normalPulse"> <span
+																			class="form-check-label">Normal pulse</span>
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="normalThirst"
+																			value="normalThirst"> <span
+																			class="form-check-label">Normal thirst</span>
+																		</label> <label class="form-check"> <input
+																			class="form-check-input" type="radio" name="eyesNotSunken"
+																			value="eyesNotSunken"> <span
+																			class="form-check-label">Eyes not sunken</span>
+																		</label><label class="form-check"> <input
+																			class="form-check-input" type="radio" name="skinPinchNormal"
+																			value="skinPinchNormal"> <span
+																			class="form-check-label">Skin pinch normal</span>
+																		</label>
+																	</div>
+																</div>
+																<div class="mb-3">
 																	<label class="form-label">Include other
 																		comments regarding your Medical History </label>
 																	<textarea class="form-control"
