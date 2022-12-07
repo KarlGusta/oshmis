@@ -57,6 +57,9 @@
                       <a class="dropdown-item" href="all-patients-edit-patients.jsp">
                         All patients and edit patient
                       </a>
+                      <a class="dropdown-item" href="all-patients-view-patients.jsp">
+                        All patients and view patient
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -377,7 +380,7 @@
 										<p><i>If location not available in list, 'select not available in the list' then add at the next box</i></p>
 										<select class="form-select" name="location" id="location">
 											<option value="Nanyuki">Nanyuki</option>
-											<option><%=theResultSet.getString(6) %></option>
+											<option><%=theResultSet.getString(7) %></option>
 											<option value="Thingithu">Thingithu</option>
 											<option value="Muthaiga">Muthaiga</option>
 											<option value="Likii">Likii</option>
@@ -386,29 +389,29 @@
 									</div>
 									<div class="mb-3">
                                            <label class="form-label"> Add a Location</label>
-                                           <input type="text" class="form-control" value="<%=theResultSet.getString(7) %>" name="addAlocation" placeholder="Enter location">
+                                           <input type="text" class="form-control" value="<%=theResultSet.getString(8) %>" name="addAlocation" placeholder="Enter location">
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">ID Number</label>
                                            <p><i>If a kid, add year of birth after Parents ID Number, e.g. 313324342022</i></p>
-                                           <input type="text" class="form-control" value="<%=theResultSet.getString(8) %>" name="idNumber" placeholder="Enter ID number">
+                                           <input type="text" class="form-control" value="<%=theResultSet.getString(9) %>" name="idNumber" placeholder="Enter ID number">
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">Phone number</label>
-                                           <input type="text" class="form-control" value="<%=theResultSet.getString(9) %>" name="phoneNumber" placeholder="Phone number">
+                                           <input type="text" class="form-control" value="<%=theResultSet.getString(10) %>" name="phoneNumber" placeholder="Phone number">
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">Next of kin name</label>
-                                           <input type="text" class="form-control" value="<%=theResultSet.getString(10) %>" name="nextOfKinName" placeholder="Enter next of kin name">
+                                           <input type="text" class="form-control" value="<%=theResultSet.getString(11) %>" name="nextOfKinName" placeholder="Enter next of kin name">
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">Next of kin phone number</label>
-                                           <input type="text" class="form-control" value="<%=theResultSet.getString(11) %>" name="nextOfKinPhoneNumber" placeholder="Enter next of kin phone number">
+                                           <input type="text" class="form-control" value="<%=theResultSet.getString(12) %>" name="nextOfKinPhoneNumber" placeholder="Enter next of kin phone number">
                                     </div>
 					                <div class="mb-3">
 										<div class="form-label">Mode of payment</div>
 										<select class="form-select" name="modeOfPayment" id="modeOfPayment">
-										    <option value="<%=theResultSet.getString(12) %>"><%=theResultSet.getString(12) %></option>
+										    <option value="<%=theResultSet.getString(13) %>"><%=theResultSet.getString(13) %></option>
 											<option value="Cash">Cash</option>
 											<option value="Insurance">Insurance</option>
 										</select>
@@ -416,7 +419,7 @@
 				                    <div class="mb-3">
 										<div class="form-label">Select insurance provider</div>
 										<select class="form-select" name="insuranceProvider" id="insuranceProvider">
-										    <option value="<%=theResultSet.getString(13) %>"><%=theResultSet.getString(13) %></option>
+										    <option value="<%=theResultSet.getString(14) %>"><%=theResultSet.getString(14) %></option>
 										    <option value="I have no insurance">I have no insurance</option>
 											<option value="NHIF">NHIF</option>
 											<option value="Kenya Reinsurance">Kenya Reinsurance</option>

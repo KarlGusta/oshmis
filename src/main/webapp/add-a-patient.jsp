@@ -57,6 +57,9 @@
                       <a class="dropdown-item" href="all-patients-edit-patients.jsp">
                         All patients and edit patient
                       </a>
+                      <a class="dropdown-item" href="all-patients-view-patients.jsp">
+                        All patients and view patient
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -142,10 +145,10 @@
 					<div class="page page-center">
 						<div class="container-tight py-4">
 						
-						<!-- Product ID -->
+						<!-- Patient ID -->
 						<%
 						    // First id to start at one
-						    int id = 1;
+						    int id = 1; 
 						
 						    try
 						    {
@@ -153,15 +156,23 @@
 						    	Statement theStatement = theConnectionToTheDB.createStatement();
 						    	
 						    	ResultSet theResultSet = theStatement.executeQuery("select max(id) from patients");
+						    	
 						    	while(theResultSet.next())
 						    	{
 						    		// First, we are getting the id from the DB
 						    		id = theResultSet.getInt(1);
-						    		
+						    	
 						    		// Increment the ID by 1. 
-						    		id = id + 1;
-						    		
-						    		
+						    		//id = id + 1;
+						    		if(id == 0) // If from the DB, there is no id
+						    		{
+						    			id = id + 10000;
+						    		}
+						    		else
+						    		{
+						    			id = id + 1; // Add only one to the next id.
+						    		}
+   		
 						    	}
 						    }
 						    catch(Exception e)
@@ -169,7 +180,8 @@
 						    	System.out.println(e);
 						    }
 						%>
-						<!-- End of Product ID -->
+						<!-- End of Patient ID -->
+						
 						
 							<form class="card card-md" action="add-a-patient-action.jsp" method="post">
 								<div class="card-body">
@@ -196,6 +208,10 @@
                                     <!-- End of success or error message -->
 									<h2 class="card-title text-center mb-4">Registry's Add a Patient Form</h2>
 									<input type="hidden" class="form-control" name="id" value="<%out.println(id); %>">
+									<div class="mb-3">
+                                           <label class="form-label">Patient Registration ID</label>
+                                           <input type="text" class="form-control" name="patientRegistrationId" id="patientRegistrationId" value="<%out.println(id); %>" disabled>
+                                    </div>
                                     <div class="mb-3">
                                            <label class="form-label">Name</label>
                                            <input type="text" class="form-control" name="name" placeholder="Enter name">
@@ -381,6 +397,13 @@
 											</div>
 										</div>
 									</div>
+									<div class="mb-3">
+										<div class="form-label">Gender</div>
+										<select class="form-select" name="gender" id="gender">
+											<option value="Male">Male</option>
+											<option value="Female">Female</option>
+										</select>
+									</div>
 			                        <div class="mb-3">
 										<div class="form-label">Location</div>
 										<p><i>If location not available in list, 'select not available in the list' then add at the next box</i></p>
@@ -394,7 +417,7 @@
 									</div>
 									<div class="mb-3">
                                            <label class="form-label"> Add a Location</label>
-                                           <input type="text" class="form-control" name="addAlocation" placeholder="Enter location">
+                                           <input type="text" class="form-control" name="addALocation" placeholder="Enter location">
                                     </div>
                                     <div class="mb-3">
                                            <label class="form-label">ID Number</label>
