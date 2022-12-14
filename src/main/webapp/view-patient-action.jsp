@@ -53,6 +53,7 @@
 	String caffeineConsumption = request.getParameter("caffeineConsumption");
 	String doYouSmoke = request.getParameter("doYouSmoke");
 	String includeOtherCommentsRegardingYourMedicalHistory = request.getParameter("includeOtherCommentsRegardingYourMedicalHistory");
+	String completedViewingPatient = request.getParameter("completedViewingPatient");
 	
 	System.out.println(patientRegistrationNumber);
 	
@@ -135,6 +136,16 @@
 		
 		// This will execute and update the records
 		thePreparedStatementThree.executeUpdate();
+		
+		// Prepared statement to insert Four
+		PreparedStatement thePreparedStatementFour = connectionToTheDB.prepareStatement("insert into patientViewed values(?,?, NOW())");
+		
+		// Set the values to the one collected in the variables from the form to the ones in the DB
+		thePreparedStatementFour.setString(1, patientRegistrationNumber);
+		thePreparedStatementFour.setString(2, completedViewingPatient);
+
+		// This will execute and update the records
+		thePreparedStatementFour.executeUpdate();
 		
 		// Send the response to our page. Msg is the variable we are passing the data
 		response.sendRedirect("all-patients-view-patients.jsp?msg=valid");

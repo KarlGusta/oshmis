@@ -8,7 +8,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>OSHMIS - All patients - Edit patients</title>
+    <title>OSHMIS - Queue a patient</title>
     <!-- CSS files -->
     <link href="./dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -160,7 +160,7 @@
                     <span class="input-icon-addon">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7" /><line x1="21" y1="21" x2="15" y2="15" /></svg>
                     </span>
-                    <input type="text" value="" class="form-control" placeholder="Searchâ¦" aria-label="Search in website">
+                    <input type="text" value="" class="form-control" placeholder="Search…" aria-label="Search in website">
                   </div>
                 </form>
               </div>
@@ -179,9 +179,24 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                  All patients and edit a patient
+                  Reception Records Unit
                 </h2>
               </div>
+              <div class="card-body border-bottom py-3">
+                    <div class="d-flex">
+                      <div class="text-muted">
+                        <a href="add-a-patient.jsp">
+                        Add a new patient
+                  </a>
+                      </div>
+                      <div class="ms-auto text-muted">
+                        Search:
+                        <div class="ms-2 d-inline-block">
+                          <input type="text" class="form-control form-control-sm" aria-label="Search invoice">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
           </div>
           
@@ -224,7 +239,7 @@
                           <th>ID Number</th>
                           <th>Location</th>
                           <th>Mode of payment</th>
-                          <th class="w-1"></th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -245,7 +260,7 @@
                           <td class="text-muted" ><%=theResultSet.getString(9) %></td>
                           <td class="text-muted" ><a href="#" class="text-reset"><%=theResultSet.getString(7) %></a></td>
                           <td class="text-muted" ><%=theResultSet.getString(13) %></td>
-                          <td><a href="edit-a-patient.jsp?id=<%=theResultSet.getString(1) %>">Edit</a></td>
+                          <td><a href="queue-a-patient.jsp?id=<%=theResultSet.getString(1) %>">Add to Queue</a></td>
                         </tr>
                         <%
                         	  }
