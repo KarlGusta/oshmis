@@ -241,7 +241,7 @@
                           <th>ID Number</th>
                           <th>Location</th>
                           <th>Mode of payment</th>
-                          <th class="w-1"></th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -262,7 +262,7 @@
                           <td class="text-muted" ><%=theResultSet.getString(9) %></td>
                           <td class="text-muted" ><a href="#" class="text-reset"><%=theResultSet.getString(7) %></a></td>
                           <td class="text-muted" ><%=theResultSet.getString(13) %></td>
-                          <td><a href="edit-a-patient.jsp?id=<%=theResultSet.getString(1) %>">Edit</a></td>
+                          <td><a href="edit-a-patient.jsp?id=<%=theResultSet.getString(1) %>">Collect cash</a></td>
                         </tr>
                         <%
                         	  }
