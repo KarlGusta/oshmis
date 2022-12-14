@@ -75,8 +75,8 @@
                 <div class="dropdown-menu">
                   <div class="dropdown-menu-columns">
                     <div class="dropdown-menu-column">
-                      <a class="dropdown-item" href="collect-cash-payments.jsp">Collect cash payment</a>
-                      <a class="dropdown-item" href="collect-insurance-payments.jsp">Collect Insurance payment</a>
+                      <a class="dropdown-item" href="collect-cash-payments.jsp">Collect cash payments</a>
+                      <a class="dropdown-item" href="collect-insurance-payments.jsp">Collect Insurance payments</a>
                     </div>
                   </div>
                 </div>
