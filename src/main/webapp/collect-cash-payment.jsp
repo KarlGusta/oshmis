@@ -259,7 +259,7 @@
 										<div class="mb-3">
 											<label class="form-label">Name</label> <input type="text"
 												class="form-control" name="example-text-input"
-												placeholder="Your report name">
+												placeholder="Client name">
 										</div>
 										<div class="row">
 											<div class="col-lg-8">
