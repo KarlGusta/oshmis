@@ -341,6 +341,13 @@
 											</div>
 										</div>
 									</div>
+									<div class="modal-body">
+									    <div class="mb-3">
+											<label class="form-label">Received by:</label> <input type="text"
+												class="form-control" name="example-text-input"
+												placeholder="John Cash Office">
+										</div>
+									</div>
 									<div class="modal-footer">
 										<a href="#" class="btn btn-link link-secondary"
 											data-bs-dismiss="modal"> Cancel </a> <a href="#"
@@ -352,7 +359,7 @@
 												stroke-linejoin="round">
 												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 												<line x1="12" y1="5" x2="12" y2="19" />
-												<line x1="5" y1="12" x2="19" y2="12" /></svg> Create new report
+												<line x1="5" y1="12" x2="19" y2="12" /></svg> Collect Cash Payment
 										</a>
 									</div>
 								</div>
