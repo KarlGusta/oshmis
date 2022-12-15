@@ -9,7 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-<title>OSHMIS - Collect Insurance Payment</title>
+<title>OSHMIS - Collect Cash Payment</title>
 <!-- CSS files -->
 <link href="./dist/css/tabler.min.css" rel="stylesheet" />
 <link href="./dist/css/tabler-flags.min.css" rel="stylesheet" />
@@ -46,7 +46,8 @@
 							class="nav-link dropdown-toggle" href="#navbar-base"
 							data-bs-toggle="dropdown" data-bs-auto-close="false"
 							role="button" aria-expanded="false"> <span
-								class="nav-link-icon d-md-none d-lg-inline-block"> <!-- Download SVG icon from http://tabler-icons.io/i/package -->
+								class="nav-link-icon d-md-none d-lg-inline-block">
+									<!-- Download SVG icon from http://tabler-icons.io/i/package -->
 									<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
 										height="24" viewBox="0 0 24 24" stroke-width="2"
 										stroke="currentColor" fill="none" stroke-linecap="round"
@@ -76,7 +77,8 @@
 							class="nav-link dropdown-toggle" href="#navbar-base"
 							data-bs-toggle="dropdown" data-bs-auto-close="false"
 							role="button" aria-expanded="false"> <span
-								class="nav-link-icon d-md-none d-lg-inline-block"> <!-- Download SVG icon from http://tabler-icons.io/i/package -->
+								class="nav-link-icon d-md-none d-lg-inline-block">
+									<!-- Download SVG icon from http://tabler-icons.io/i/package -->
 									<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
 										height="24" viewBox="0 0 24 24" stroke-width="2"
 										stroke="currentColor" fill="none" stroke-linecap="round"
@@ -103,7 +105,8 @@
 							class="nav-link dropdown-toggle" href="#navbar-base"
 							data-bs-toggle="dropdown" data-bs-auto-close="false"
 							role="button" aria-expanded="false"> <span
-								class="nav-link-icon d-md-none d-lg-inline-block"> <!-- Download SVG icon from http://tabler-icons.io/i/package -->
+								class="nav-link-icon d-md-none d-lg-inline-block">
+									<!-- Download SVG icon from http://tabler-icons.io/i/package -->
 									<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
 										height="24" viewBox="0 0 24 24" stroke-width="2"
 										stroke="currentColor" fill="none" stroke-linecap="round"
@@ -128,7 +131,8 @@
 							class="nav-link dropdown-toggle" href="#navbar-base"
 							data-bs-toggle="dropdown" data-bs-auto-close="false"
 							role="button" aria-expanded="false"> <span
-								class="nav-link-icon d-md-none d-lg-inline-block"> <!-- Download SVG icon from http://tabler-icons.io/i/package -->
+								class="nav-link-icon d-md-none d-lg-inline-block">
+									<!-- Download SVG icon from http://tabler-icons.io/i/package -->
 									<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
 										height="24" viewBox="0 0 24 24" stroke-width="2"
 										stroke="currentColor" fill="none" stroke-linecap="round"
@@ -249,7 +253,7 @@
 								role="document">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h5 class="modal-title">Collect Insurance Payment</h5>
+										<h5 class="modal-title">Collect Cash Payment</h5>
 									</div>
 									<div class="modal-body">
 										<div class="mb-3">
@@ -257,76 +261,48 @@
 												class="form-control" name="example-text-input"
 												placeholder="Your report name">
 										</div>
-										<label class="form-label">Report type</label>
-										<div class="form-selectgroup-boxes row mb-3">
-											<div class="col-lg-6">
-												<label class="form-selectgroup-item"> <input
-													type="radio" name="report-type" value="1"
-													class="form-selectgroup-input" checked> <span
-													class="form-selectgroup-label d-flex align-items-center p-3">
-														<span class="me-3"> <span
-															class="form-selectgroup-check"></span>
-													</span> <span class="form-selectgroup-label-content"> <span
-															class="form-selectgroup-title strong mb-1">Simple</span>
-															<span class="d-block text-muted">Provide only
-																basic data needed for the report</span>
-													</span>
-												</span>
-												</label>
-											</div>
-											<div class="col-lg-6">
-												<label class="form-selectgroup-item"> <input
-													type="radio" name="report-type" value="1"
-													class="form-selectgroup-input"> <span
-													class="form-selectgroup-label d-flex align-items-center p-3">
-														<span class="me-3"> <span
-															class="form-selectgroup-check"></span>
-													</span> <span class="form-selectgroup-label-content"> <span
-															class="form-selectgroup-title strong mb-1">Advanced</span>
-															<span class="d-block text-muted">Insert charts and
-																additional advanced analyses to be inserted in the
-																report</span>
-													</span>
-												</span>
-												</label>
-											</div>
-										</div>
 										<div class="row">
 											<div class="col-lg-8">
 												<div class="mb-3">
-													<label class="form-label">Report url</label>
+													<label class="form-label">Cash Payment Number</label>
 													<div class="input-group input-group-flat">
-														<span class="input-group-text">
-															https://tabler.io/reports/ </span> <input type="text"
-															class="form-control ps-0" value="report-01"
-															autocomplete="off">
+														<input type="text"
+												class="form-control" name="example-text-input"
+												placeholder="C-123-2022">
 													</div>
 												</div>
 											</div>
 											<div class="col-lg-4">
 												<div class="mb-3">
-													<label class="form-label">Visibility</label> <select
-														class="form-select">
-														<option value="1" selected>Private</option>
-														<option value="2">Public</option>
-														<option value="3">Hidden</option>
-													</select>
+													<label class="form-label">Date</label><input type="date" class="form-control">
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="modal-body">
+									<div class="row">
+											<div class="col-lg-4">
+												<div class="mb-3">
+													<label class="form-label">Amount to Pay</label>
+													<div class="input-group input-group-flat">
+														<input type="text"
+												class="form-control" name="example-text-input"
+												placeholder="1050.00">
+													</div>
+												</div>
+											</div>
+										</div>
 										<div class="row">
 											<div class="col-lg-6">
 												<div class="mb-3">
-													<label class="form-label">Client name</label> <input
-														type="text" class="form-control">
+													<label class="form-label">Amount paid</label> <input
+														type="text" class="form-control" placeholder="1000.00">
 												</div>
 											</div>
 											<div class="col-lg-6">
 												<div class="mb-3">
-													<label class="form-label">Reporting period</label> <input
-														type="date" class="form-control">
+													<label class="form-label">Balance</label> <input
+														type="text" class="form-control" placeholder="50.00">
 												</div>
 											</div>
 											<div class="col-lg-12">
@@ -335,6 +311,13 @@
 													<textarea class="form-control" rows="3"></textarea>
 												</div>
 											</div>
+										</div>
+									</div>
+									<div class="modal-body">
+									    <div class="mb-3">
+											<label class="form-label">Received by:</label> <input type="text"
+												class="form-control" name="example-text-input"
+												placeholder="John Cash Office">
 										</div>
 									</div>
 									<div class="modal-footer">
