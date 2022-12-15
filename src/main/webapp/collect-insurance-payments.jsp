@@ -262,7 +262,7 @@
                           <td class="text-muted" ><%=theResultSet.getString(9) %></td>
                           <td class="text-muted" ><a href="#" class="text-reset"><%=theResultSet.getString(7) %></a></td>
                           <td class="text-muted" ><%=theResultSet.getString(13) %></td>
-                          <td><a href="edit-a-patient.jsp?id=<%=theResultSet.getString(1) %>">Collect Insurance Payment</a></td>
+                          <td><a href="collect-insurance-payment.jsp?id=<%=theResultSet.getString(1) %>">Collect Insurance Payment</a></td>
                         </tr>
                         <%
                         	  }
