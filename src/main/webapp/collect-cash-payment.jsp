@@ -251,30 +251,81 @@
 						<div tabindex="-1" role="dialog">
 							<div class="modal-dialog modal-lg modal-dialog-centered"
 								role="document">
+								
+								<!-- Patient ID -->
+								<%
+								    // Get the id from the URL
+								    String id = request.getParameter("id");
+								
+								    try 
+								    {
+								    	Connection theConnectionToTheDB = ConnectionProvider.getCon();
+								    	Statement theStatement = theConnectionToTheDB.createStatement();
+								    	
+								    	ResultSet theResultSet = theStatement.executeQuery("select * from patients where id='"+id+"'");
+								    	while(theResultSet.next())
+								    	{
+								%>
+								<!-- End of patient ID -->
+								
+								<!-- Cash Payment Number -->
+								<%
+						    // First id to start at one
+						    int cashPaymentNumber = 1; 
+						
+						    try
+						    {
+						    	Connection theConnectionToTheDBTwo = ConnectionProvider.getCon();
+						    	Statement theStatementTwo = theConnectionToTheDBTwo.createStatement();
+						    	
+						    	ResultSet theResultSetTwo = theStatementTwo.executeQuery("select max(id) from patients");
+						    	
+						    	while(theResultSetTwo.next())
+						    	{
+						    		// First, we are getting the id from the DB
+						    		cashPaymentNumber = theResultSetTwo.getInt(1);
+						    	
+						    		// Increment the ID by 1. 
+						    		//id = id + 1;
+						    		if(cashPaymentNumber == 0) // If from the DB, there is no id
+						    		{
+						    			cashPaymentNumber = cashPaymentNumber + 10000;
+						    		}
+						    		else
+						    		{
+						    			cashPaymentNumber = cashPaymentNumber + 1; // Add only one to the next id.
+						    		}
+   		
+						    	}
+						    }
+						    catch(Exception e)
+						    {
+						    	System.out.println(e);
+						    }
+						%>
+								<!-- End of Cash Payment Number -->
+								
+							  <form action="collect-cash-payment-action.jsp" method="post">
 								<div class="modal-content">
 									<div class="modal-header">
 										<h5 class="modal-title">Collect Cash Payment</h5>
 									</div>
 									<div class="modal-body">
 										<div class="mb-3">
-											<label class="form-label">Name</label> <input type="text"
-												class="form-control" name="example-text-input"
-												placeholder="Client name">
+											<label class="form-label">Name</label> <input type="text" class="form-control" name="name" value="<%=theResultSet.getString(2) %>" placeholder="Client name" disabled>
 										</div>
 										<div class="row">
 											<div class="col-lg-8">
 												<div class="mb-3">
 													<label class="form-label">Cash Payment Number</label>
 													<div class="input-group input-group-flat">
-														<input type="text"
-												class="form-control" name="example-text-input"
-												placeholder="C-123-2022">
+														<input type="text" class="form-control" name="example-text-input" placeholder="Enter Cash Payment Number" value="C-<% out.println(cashPaymentNumber); %>" disabled>
 													</div>
 												</div>
 											</div>
 											<div class="col-lg-4">
 												<div class="mb-3">
-													<label class="form-label">Date</label><input type="date" class="form-control">
+													<label class="form-label">Date</label><input type="date" class="form-control" id="cashPaymentDate">
 												</div>
 											</div>
 										</div>
@@ -335,6 +386,16 @@
 										</a>
 									</div>
 								</div>
+							  </form>
+							  <%
+						    	    }
+						        }
+						        catch(Exception e)
+						        {
+						        	System.out.println(e);
+						        }
+						    
+							  %>
 							</div>
 						</div>
 					</div>
@@ -354,5 +415,8 @@
 	<!-- Tabler Core -->
 	<script src="./dist/js/tabler.min.js" defer></script>
 	<script src="./dist/js/demo.min.js" defer></script>
+	<script>
+	    document.getElementById("cashPaymentDate").valueAsDate = new Date();
+	</script>
 </body>
 </html>
