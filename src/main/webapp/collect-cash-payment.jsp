@@ -415,6 +415,7 @@
 	<!-- Tabler Core -->
 	<script src="./dist/js/tabler.min.js" defer></script>
 	<script src="./dist/js/demo.min.js" defer></script>
+	<!-- Cash Payment Date -->
 	<script>
 	    document.getElementById("cashPaymentDate").valueAsDate = new Date();
 	</script>
