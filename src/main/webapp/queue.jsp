@@ -8,7 +8,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>OSHMIS - All patients - View patients</title>
+    <title>OSHMIS - Queue a patient</title>
     <!-- CSS files -->
     <link href="./dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -196,9 +196,24 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                  All patients and view a patient
+                  Reception Records Unit
                 </h2>
               </div>
+              <div class="card-body border-bottom py-3">
+                    <div class="d-flex">
+                      <div class="text-muted">
+                        <a href="add-a-patient.jsp">
+                        Add a new patient
+                  </a>
+                      </div>
+                      <div class="ms-auto text-muted">
+                        Search:
+                        <div class="ms-2 d-inline-block">
+                          <input type="text" class="form-control form-control-sm" aria-label="Search invoice">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
           </div>
           
@@ -241,7 +256,7 @@
                           <th>ID Number</th>
                           <th>Location</th>
                           <th>Mode of payment</th>
-                          <th class="w-1"></th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -251,7 +266,7 @@
                         	  Connection theConnectionToTheDB = ConnectionProvider.getCon();
                         	  Statement theStatement = theConnectionToTheDB.createStatement();
                         	  
-                        	  ResultSet theResultSet = theStatement.executeQuery("select * from patients inner join patientViewed where patients.id=patientViewed.patientRegistrationNumber and patientViewed.completedViewingPatient = 'No'");
+                        	  ResultSet theResultSet = theStatement.executeQuery("select * from patients");
                         	  
                         	  while(theResultSet.next())
                         	  {
@@ -262,7 +277,7 @@
                           <td class="text-muted" ><%=theResultSet.getString(9) %></td>
                           <td class="text-muted" ><a href="#" class="text-reset"><%=theResultSet.getString(7) %></a></td>
                           <td class="text-muted" ><%=theResultSet.getString(13) %></td>
-                          <td><a href="view-patient.jsp?id=<%=theResultSet.getString(1) %>">View</a></td>
+                          <td><a href="queue-a-patient.jsp?id=<%=theResultSet.getString(1) %>">Add to Queue</a></td>
                         </tr>
                         <%
                         	  }

@@ -19,6 +19,7 @@
 	String nextOfKinPhoneNumber = request.getParameter("nextOfKinPhoneNumber");
 	String modeOfPayment = request.getParameter("modeOfPayment");
 	String insuranceProvider = request.getParameter("insuranceProvider");
+	String status = "triage";
 	
 	System.out.println(id);
 	
@@ -29,7 +30,7 @@
 		Connection connectionToTheDB = ConnectionProvider.getCon();
 		
 		// Prepared statement to insert
-		PreparedStatement thePreparedStatement = connectionToTheDB.prepareStatement("insert into patients values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		PreparedStatement thePreparedStatement = connectionToTheDB.prepareStatement("insert into patients values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		
 		// Set the values to the one collected in the variables from the form to the ones in the DB
 		thePreparedStatement.setString(1, id);
@@ -46,6 +47,7 @@
 		thePreparedStatement.setString(12, nextOfKinPhoneNumber);
 		thePreparedStatement.setString(13, modeOfPayment);
 		thePreparedStatement.setString(14, insuranceProvider);
+		thePreparedStatement.setString(15, status);
 		
 		// This will execute ad update the data
 		thePreparedStatement.executeUpdate();

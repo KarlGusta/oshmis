@@ -8,7 +8,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>OSHMIS - All patients - View patients</title>
+    <title>OSHMIS - Collect Insurance Payments</title>
     <!-- CSS files -->
     <link href="./dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -196,7 +196,7 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                  All patients and view a patient
+                  Collect Insurance Payments
                 </h2>
               </div>
             </div>
@@ -241,7 +241,7 @@
                           <th>ID Number</th>
                           <th>Location</th>
                           <th>Mode of payment</th>
-                          <th class="w-1"></th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -251,7 +251,7 @@
                         	  Connection theConnectionToTheDB = ConnectionProvider.getCon();
                         	  Statement theStatement = theConnectionToTheDB.createStatement();
                         	  
-                        	  ResultSet theResultSet = theStatement.executeQuery("select * from patients inner join patientViewed where patients.id=patientViewed.patientRegistrationNumber and patientViewed.completedViewingPatient = 'No'");
+                        	  ResultSet theResultSet = theStatement.executeQuery("select * from patients where modeOfPayment='insurance'");
                         	  
                         	  while(theResultSet.next())
                         	  {
@@ -262,7 +262,7 @@
                           <td class="text-muted" ><%=theResultSet.getString(9) %></td>
                           <td class="text-muted" ><a href="#" class="text-reset"><%=theResultSet.getString(7) %></a></td>
                           <td class="text-muted" ><%=theResultSet.getString(13) %></td>
-                          <td><a href="view-patient.jsp?id=<%=theResultSet.getString(1) %>">View</a></td>
+                          <td><a href="collect-insurance-payment.jsp?id=<%=theResultSet.getString(1) %>">Collect Insurance Payment</a></td>
                         </tr>
                         <%
                         	  }
