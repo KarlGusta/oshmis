@@ -94,6 +94,7 @@
 							<div class="dropdown-menu">
 								<div class="dropdown-menu-columns">
 									<div class="dropdown-menu-column">
+									    <a class="dropdown-item" href="select-patient-to-add-item-to.jsp">Add items to pay</a>
 										<a class="dropdown-item" href="collect-cash-payments.jsp">Collect
 											cash payments</a> <a class="dropdown-item"
 											href="collect-insurance-payments.jsp">Collect Insurance
@@ -329,6 +330,21 @@
 												</div>
 											</div>
 										</div>
+									</div>
+									<div class="modal-body">
+									<div class="row">
+									    <div class="col-lg-4">
+									        <div class="mb-3">
+									            <label class="form-label">Items to pay</label>
+									            <div class="mb-4">
+									                <ul>
+									                  <li>Consultation - Kshs. 200</li>
+									                  <li>Patient ID - Kshs. 500</li>
+									                </ul>
+									            </div>
+									        </div>
+									    </div>
+									</div>
 									</div>
 									<div class="modal-body">
 									<div class="row">

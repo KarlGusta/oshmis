@@ -8,7 +8,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>OSHMIS - All patients - Edit patients</title>
+    <title>OSHMIS - Add items to pay</title>
     <!-- CSS files -->
     <link href="./dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -178,7 +178,7 @@
                     <span class="input-icon-addon">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7" /><line x1="21" y1="21" x2="15" y2="15" /></svg>
                     </span>
-                    <input type="text" value="" class="form-control" placeholder="Searchâ¦" aria-label="Search in website">
+                    <input type="text" value="" class="form-control" placeholder="Search…" aria-label="Search in website">
                   </div>
                 </form>
               </div>
@@ -190,87 +190,73 @@
       <!-- This is the end of the header -->
       
       <!-- This is the start of the contents of the page -->
+      <!-- This is the start of the contents of the page -->
       <div class="page-wrapper">
-         <div class="container-xl">
-          <!-- Page title -->
-          <div class="page-header d-print-none">
-            <div class="row g-2 align-items-center">
-              <div class="col">
-                <h2 class="page-title">
-                  All patients and edit a patient
-                </h2>
-              </div>
-            </div>
-          </div>
-          
-           <!-- Success or error message -->
-			<%
-                String msg=request.getParameter("msg");
-                if("done".equals(msg))
-                  {
-             %>
-             <div class="alert-success">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                     Edit patient details successful!
-             </div>
-             <%} %>
-             <%
-                 if("wrong".equals(msg))
-                  {
-              %>
-             <div class="alert-error">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                     Patient details not edited. Please try again!
-             </div>
-             <%} %>
-         <!-- End of success or error message -->
-         
-        </div>
         <div class="page-body">
         <div class="container-xl">
 			<!-- Content here -->
-			<div class="row row-cards">
-              <div class="col-12">
+			<div class="row row-deck row-cards">
+			    <div class="col-12">
                 <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Select patient to add item to</h3>
+                  </div>
+                  <div class="card-body border-bottom py-3">
+                    <div class="d-flex">
+                      <div class="text-muted">
+                        Show
+                        <div class="mx-2 d-inline-block">
+                          <input type="text" class="form-control form-control-sm" value="8" size="3" aria-label="Invoices count">
+                        </div>
+                        entries
+                      </div>
+                      <div class="ms-auto text-muted">
+                        Search:
+                        <div class="ms-2 d-inline-block">
+                          <input type="text" class="form-control form-control-sm" aria-label="Search invoice">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="table-responsive">
-                    <table
-		                  class="table table-vcenter card-table">
+                    <table class="table card-table table-vcenter text-nowrap datatable">
                       <thead>
                         <tr>
-                          <th>No.</th>
+                          <th class="w-1"><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select all invoices"></th>
+                          <th>No. <!-- Download SVG icon from http://tabler-icons.io/i/chevron-up -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-sm text-dark icon-thick" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="6 15 12 9 18 15" /></svg>
+                          </th>
                           <th>Name</th>
                           <th>ID Number</th>
                           <th>Location</th>
-                          <th>Mode of payment</th>
-                          <th class="w-1"></th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
-                      <%
-                    		
-                    	// With this, I want to show "Nothing to show" when there is no data to display from the database.
-                    	int dataToShowOnTheTable = 0;
-                      
+                          <%	 
+                       // Get the id from the URL
+                          String id = request.getParameter("id");
+                    		 
                           try
                           {
-                        	  Connection theConnectionToTheDB = ConnectionProvider.getCon();
-                        	  Statement theStatement = theConnectionToTheDB.createStatement();
+                        	  Connection theConnectionToTheDBTwo = ConnectionProvider.getCon();
+                        	  Statement theStatementTwo = theConnectionToTheDBTwo.createStatement();
                         	  
-                        	  ResultSet theResultSet = theStatement.executeQuery("select * from patients");
+                        	  ResultSet theResultSetTwo = theStatementTwo.executeQuery("select * from patients");
                         	  
-                        	  while(theResultSet.next())
+                        	  while(theResultSetTwo.next())
                         	  {
-                        	    dataToShowOnTheTable = 1;
+                        	
                       %>
                         <tr>
-                          <td><%=theResultSet.getString(1) %></td>
-                          <td ><%=theResultSet.getString(2) %></td>
-                          <td class="text-muted" ><%=theResultSet.getString(9) %></td>
-                          <td class="text-muted" ><a href="#" class="text-reset"><%=theResultSet.getString(7) %></a></td>
-                          <td class="text-muted" ><%=theResultSet.getString(13) %></td>
-                          <td><a href="edit-a-patient.jsp?id=<%=theResultSet.getString(1) %>">Edit</a></td>
+                          <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
+                          <td><span class="text-muted"><%=theResultSetTwo.getString(1) %></span></td>
+                          <td><a href="#" class="text-reset" tabindex="-1"><%=theResultSetTwo.getString(2) %></a></td>
+                          <td><%=theResultSetTwo.getString(9) %></td>
+                          <td><%=theResultSetTwo.getString(7) %></td>
+                          <td><a class="btn btn-primary" href="item-to-add-to-payment.jsp?id=<%=theResultSetTwo.getString(1) %>">Select patient</a></td>
                         </tr>
-                        <%
+                            <%
                         	  }
                           }
                           catch(Exception e)
@@ -280,19 +266,40 @@
                         %>
                       </tbody>
                     </table>
-                    <%if(dataToShowOnTheTable==0){ %>
-                        <h2 class="card-title text-center mb-2 mt-2">Nothing to show.</h2>
-                    <%} %>
+                  </div>
+                  <div class="card-footer d-flex align-items-center">
+                    <p class="m-0 text-muted">Showing <span>1</span> to <span>8</span> of <span>16</span> entries</p>
+                    <ul class="pagination m-0 ms-auto">
+                      <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                          <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="15 6 9 12 15 18" /></svg>
+                          prev
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item"><a class="page-link" href="#">4</a></li>
+                      <li class="page-item"><a class="page-link" href="#">5</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">
+                          next <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="9 6 15 12 9 18" /></svg>
+                        </a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
-            </div>
+			</div>		
+			<!-- End of Content here -->
         </div>
         </div>   
         <!-- This is the start of the footer -->
           <!-- <p>This is where the footer should be but I have removed it.</p> -->
         <!-- This is the end of the footer -->
-      </div> 
+      </div>
       <!-- This is the end of the contents of the page -->
     </div>
     <!-- Libs JS -->

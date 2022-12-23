@@ -75,6 +75,7 @@
                 <div class="dropdown-menu">
                   <div class="dropdown-menu-columns">
                     <div class="dropdown-menu-column">
+                      <a class="dropdown-item" href="select-patient-to-add-item-to.jsp">Add items to pay</a>
                       <a class="dropdown-item" href="collect-cash-payments.jsp">Collect cash payments</a>
                       <a class="dropdown-item" href="collect-insurance-payments.jsp">Collect Insurance payments</a>
                     </div>
@@ -245,7 +246,10 @@
                         </tr>
                       </thead>
                       <tbody>
-                      <%
+                      <%  		 
+                      // With this, I want to show "Nothing to show" when there is no data to display from the database.
+                      int dataToShowOnTheTable = 0;
+                    		 
                           try
                           {
                         	  Connection theConnectionToTheDB = ConnectionProvider.getCon();
@@ -255,6 +259,7 @@
                         	  
                         	  while(theResultSet.next())
                         	  {
+                        		  dataToShowOnTheTable = 1;
                       %>
                         <tr>
                           <td><%=theResultSet.getString(1) %></td>
@@ -274,6 +279,9 @@
                         %>
                       </tbody>
                     </table>
+                    <%if(dataToShowOnTheTable==0){ %>
+                        <h2>Nothing to show.</h2>
+                    <%} %>
                   </div>
                 </div>
               </div>

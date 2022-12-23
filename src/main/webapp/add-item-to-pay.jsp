@@ -1,3 +1,5 @@
+<%@page import="project.ConnectionProvider"%>
+<%@page import="java.sql.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -6,13 +8,16 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Achamit - Leave Application</title>
+    <title>OSHMIS - Edit a Patient</title>
     <!-- CSS files -->
     <link href="./dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-flags.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-payments.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-vendors.min.css" rel="stylesheet"/>
     <link href="./dist/css/demo.min.css" rel="stylesheet"/>
+    
+        <!-- 'Alert after submitting' CSS File -->
+    <link href="./dist/css/alert-after-submit.css" rel="stylesheet"/>
   </head>
   <body >
     <div class="page">
@@ -40,15 +45,73 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" /><line x1="12" y1="12" x2="20" y2="7.5" /><line x1="12" y1="12" x2="12" y2="21" /><line x1="12" y1="12" x2="4" y2="7.5" /><line x1="16" y1="5.25" x2="8" y2="9.75" /></svg>
                   </span>
                   <span class="nav-link-title">
-                    Leave application
+                    Reception Records Unit
                   </span>
                 </a>
                 <div class="dropdown-menu">
                   <div class="dropdown-menu-columns">
                     <div class="dropdown-menu-column">
-                      <a class="dropdown-item" href="apply-for-leave.jsp">
-                        Apply for leave
+                      <a class="dropdown-item" href="queue.jsp">Queue a patient</a>
+                      <a class="dropdown-item" href="add-a-patient.jsp">Add a new patient</a>
+                      <a class="dropdown-item" href="all-patients-edit-patients.jsp">
+                        All patients and edit patient
                       </a>
+                      <a class="dropdown-item" href="all-patients-view-patients.jsp">
+                        All patients and view patient
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false" >
+                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" /><line x1="12" y1="12" x2="20" y2="7.5" /><line x1="12" y1="12" x2="12" y2="21" /><line x1="12" y1="12" x2="4" y2="7.5" /><line x1="16" y1="5.25" x2="8" y2="9.75" /></svg>
+                  </span>
+                  <span class="nav-link-title">
+                    Cash Office
+                  </span>
+                </a>
+                <div class="dropdown-menu">
+                  <div class="dropdown-menu-columns">
+                    <div class="dropdown-menu-column">
+                      <a class="dropdown-item" href="select-patient-to-add-item-to.jsp">Add items to pay</a>
+                      <a class="dropdown-item" href="collect-cash-payments.jsp">Collect cash payments</a>
+                      <a class="dropdown-item" href="collect-insurance-payments.jsp">Collect Insurance payments</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false" >
+                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" /><line x1="12" y1="12" x2="20" y2="7.5" /><line x1="12" y1="12" x2="12" y2="21" /><line x1="12" y1="12" x2="4" y2="7.5" /><line x1="16" y1="5.25" x2="8" y2="9.75" /></svg>
+                  </span>
+                  <span class="nav-link-title">
+                    Outpatient Nurse Unit
+                  </span>
+                </a>
+                <div class="dropdown-menu">
+                  <div class="dropdown-menu-columns">
+                    <div class="dropdown-menu-column">
+                      <a class="dropdown-item" href="triage.jsp">Triage a Patient</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false" >
+                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" /><line x1="12" y1="12" x2="20" y2="7.5" /><line x1="12" y1="12" x2="12" y2="21" /><line x1="12" y1="12" x2="4" y2="7.5" /><line x1="16" y1="5.25" x2="8" y2="9.75" /></svg>
+                  </span>
+                  <span class="nav-link-title">
+                    Outpatient Doctors Unit
+                  </span>
+                </a>
+                <div class="dropdown-menu">
+                  <div class="dropdown-menu-columns">
+                    <div class="dropdown-menu-column">
+                      <a class="dropdown-item" href="all-patients-view-patients.jsp">All Patients, View Patient</a>
                     </div>
                   </div>
                 </div>
@@ -94,7 +157,7 @@
                   <!--<span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>  -->
                 <!-- This is the end of the profile photo. I have commented it out -->
                 <div class="d-none d-xl-block ps-2">
-                  <div>Pawe Kuna</div>
+                  <div>Karl</div>
                   <div class="mt-1 small text-muted">UI Designer</div>
                 </div>
               </a>
@@ -131,79 +194,62 @@
         <div class="page-body">
         <div class="container-xl">
 					<!-- Content here -->
-					<!-- Hidden field for the Sweetalert -->
-					<input type="hidden" id="status"
-						value="<%=request.getAttribute("status")%>" />
-
 					<div class="page page-center">
 						<div class="container-tight py-4">
-							<form class="card card-md" action="registerfarmer" method="post">
+						
+						<!-- Product ID -->
+						<%
+						    // Get the id from the URL
+                            String id = request.getParameter("id");
+						
+						    try
+						    {
+						    	Connection theConnectionToTheDB = ConnectionProvider.getCon();
+						    	Statement theStatement = theConnectionToTheDB.createStatement();
+						    	
+						    	ResultSet theResultSet = theStatement.executeQuery("select * from patients where id='"+id+"'");
+						    	while(theResultSet.next())
+						    	{
+						    		
+						%>
+						<!-- End of Product ID -->
+						
+							<form class="card card-md" action="edit-a-patient-action.jsp" method="post">
 								<div class="card-body">
-									<h2 class="card-title text-center mb-4">Registry's Leave Application Form</h2>
-									<div class="mb-3">
-										<div class="row">
-											<div class="col">
-												<label class="form-label">First Name</label> <input
-													type="text" name="applicantFirstName" id="applicantFirstName"
-													class="form-control" placeholder="Enter first name">
-											</div>
-											<div class="col">
-												<label class="form-label">Last Name</label> <input
-													type="text" name="applicantLastName" id="applicantLastName"
-													class="form-control" placeholder="Enter last name">
-											</div>
-										</div>
-									</div>
-					                <div class="mb-3">
-										<div class="form-label">Select the Leave type</div>
-										<select class="form-select" name="leaveType" id="leaveType">
-											<option value="Annual leave">Annual leave</option>
-											<option value="Maternity">Maternity</option>
-											<option value="Paternity">Paternity</option>
-											<option value="Compassionate">Compassionate</option>
-										</select>
-									</div>
-									<div class="mb-3">
-                                      <label class="form-label">Job title</label>
-                                      <input class="form-control" list="datalistOptions" placeholder="Type to search job title..."/>
-                                      <datalist id="datalistOptions">
-                                           <option value="ICT Officer"/>
-                                           <option value="HR Officer"/>
-                                           <option value="Payroll Officer"/>
-                                           <option value="Finance Officer"/>
-                                           <option value="Procurement Officer"/>
-                                           <option value="Trade Officer"/>
-                                           <option value="Health Officer"/>
-                                           <option value="Secretary"/>
-                                           <option value="Nurse"/>
-                                           <option value="Clinical officer"/>
-                                      </datalist>
-                                    </div>
+								<!-- Success or error message -->
+								    <%
+                                      String msg=request.getParameter("msg");
+                                      if("valid".equals(msg))
+                                       {
+                                     %>
+                                     <div class="alert-success">
+                                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                       Patient registered successfully!
+                                     </div>
+                                    <%} %>
+                                    <%
+                                     if("invalid".equals(msg))
+                                       {
+                                      %>
+                                     <div class="alert-error">
+                                       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                        Patient not registered. Please try again!
+                                     </div>
+                                    <%} %>
+                                    <!-- End of success or error message -->
+									<h2 class="card-title text-center mb-4">Edit a Patient Form</h2>
+									<input type="hidden" name="id" value="<% out.println(id); %>">
                                     <div class="mb-3">
-                                           <label class="form-label">Personal Number</label>
-                                           <input type="text" class="form-control" name="personalNumber" placeholder="Input personal number">
-                                    </div>
-                                    <div class="mb-3">
-                                           <label class="form-label">ID Number</label>
-                                           <input type="text" class="form-control" name="idNumber" placeholder="Input ID number">
-                                    </div>
-                                    <div class="mb-3">
-                                           <label class="form-label">Department</label>
-                                           <input type="text" class="form-control" name="department" placeholder="Input department">
-                                    </div>
-                                    <div class="input-icon mb-2">
-                                           <label class="form-label">Department</label>
-                                           <input class="form-control " placeholder="Select a date" id="datepicker-icon" value="2020-06-20"/>
-                                           <span class="input-icon-addon"><!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="5" width="16" height="16" rx="2" /><line x1="16" y1="3" x2="16" y2="7" /><line x1="8" y1="3" x2="8" y2="7" /><line x1="4" y1="11" x2="20" y2="11" /><line x1="11" y1="15" x2="12" y2="15" /><line x1="12" y1="15" x2="12" y2="18" /></svg>
-                                           </span>
+                                           <label class="form-label">Name</label>
+                                           <input type="text" class="form-control" name="name" value="<%=theResultSet.getString(2) %>" placeholder="Enter name">
                                     </div>
 									<div class="mb-3">
-										<label class="form-label">Start Date</label>
+										<label class="form-label">D.O.B</label>
 										<div class="row g-2">
 											<div class="col-5">
-												<select name="applicantStartMonth" class="form-select">
+												<select name="monthOfBirth" class="form-select">
 													<option value="">Month</option>
+													<option value="<%=theResultSet.getString(3) %>" selected><%=theResultSet.getString(3) %></option>
 													<option value="1">January</option>
 													<option value="2">February</option>
 													<option value="3">March</option>
@@ -219,8 +265,9 @@
 												</select>
 											</div>
 											<div class="col-3">
-												<select name="applicantStartDate" class="form-select">
+												<select name="dateOfBirth" class="form-select">
 													<option value="">Day</option>
+													<option value="<%=theResultSet.getString(4) %>" selected><%=theResultSet.getString(4) %></option>
 													<option value="1">1</option>
 													<option value="2">2</option>
 													<option value="3">3</option>
@@ -240,7 +287,7 @@
 													<option value="17">17</option>
 													<option value="18">18</option>
 													<option value="19">19</option>
-													<option value="20" selected>20</option>
+													<option value="20">20</option>
 													<option value="21">21</option>
 													<option value="22">22</option>
 													<option value="23">23</option>
@@ -255,8 +302,9 @@
 												</select>
 											</div>
 											<div class="col-4">
-												<select name="applicantStartYear" class="form-select">
+												<select name="yearOfBirth" class="form-select">
 													<option value="">Year</option>
+													<option value="<%=theResultSet.getString(5) %>"><%=theResultSet.getString(5) %></option>
 													<option value="2014">2014</option>
 													<option value="2013">2013</option>
 													<option value="2012">2012</option>
@@ -379,88 +427,69 @@
 											</div>
 										</div>
 									</div>
-									<div class="mb-3">
-									  <label class="form-label">Telephone number</label>
-									  <input type="text" name="farmerTelephoneNumber" id="farmerTelephoneNumber" class="form-control" data-mask="(000) 000-000-0" data-mask-visible="true" placeholder="(000) 000-000-0" autocomplete="off"/>
+			                        <div class="mb-3">
+										<div class="form-label">Location</div>
+										<p><i>If location not available in list, 'select not available in the list' then add at the next box</i></p>
+										<select class="form-select" name="location" id="location">
+											<option value="Nanyuki">Nanyuki</option>
+											<option><%=theResultSet.getString(7) %></option>
+											<option value="Thingithu">Thingithu</option>
+											<option value="Muthaiga">Muthaiga</option>
+											<option value="Likii">Likii</option>
+											<option value="Not available">Not available in the list</option>
+										</select>
 									</div>
-                                    <div class="mb-3">
-                                      <div class="form-label">Select type of farming practiced</div>
-                                      <select name="farmingPracticed" id="farmingPracticed" class="form-select">
-                                        <option value="Crop-based farming">Crop-based farming</option>
-                                        <option value="animal-based farming">Animal-based farming</option>
-                                        <option value="Both crop-based and animal-based farming">Both crop-based and animal-based farming</option>
-                                      </select>
+									<div class="mb-3">
+                                           <label class="form-label"> Add a Location</label>
+                                           <input type="text" class="form-control" value="<%=theResultSet.getString(8) %>" name="addAlocation" placeholder="Enter location">
                                     </div>
-									<div class="mb-3">
-										<div class="form-label">Select Farmer's location</div>
-										<select name="farmerLocation" id="farmerLocation" class="form-select">
-											<option value="Nanyuki">Nanyuki ward</option>
-											<option value="Thingithu">Thingithu ward</option>
-											<option value="Igwamiti">Igwamiti ward</option>
+                                    <div class="mb-3">
+                                           <label class="form-label">ID Number</label>
+                                           <p><i>If a kid, add year of birth after Parents ID Number, e.g. 313324342022</i></p>
+                                           <input type="text" class="form-control" value="<%=theResultSet.getString(9) %>" name="idNumber" placeholder="Enter ID number">
+                                    </div>
+                                    <div class="mb-3">
+                                           <label class="form-label">Phone number</label>
+                                           <input type="text" class="form-control" value="<%=theResultSet.getString(10) %>" name="phoneNumber" placeholder="Phone number">
+                                    </div>
+                                    <div class="mb-3">
+                                           <label class="form-label">Next of kin name</label>
+                                           <input type="text" class="form-control" value="<%=theResultSet.getString(11) %>" name="nextOfKinName" placeholder="Enter next of kin name">
+                                    </div>
+                                    <div class="mb-3">
+                                           <label class="form-label">Next of kin phone number</label>
+                                           <input type="text" class="form-control" value="<%=theResultSet.getString(12) %>" name="nextOfKinPhoneNumber" placeholder="Enter next of kin phone number">
+                                    </div>
+					                <div class="mb-3">
+										<div class="form-label">Mode of payment</div>
+										<select class="form-select" name="modeOfPayment" id="modeOfPayment">
+										    <option value="<%=theResultSet.getString(13) %>"><%=theResultSet.getString(13) %></option>
+											<option value="Cash">Cash</option>
+											<option value="Insurance">Insurance</option>
 										</select>
 									</div>
-									<div class="mb-3">
-										<label class="form-label">Farmer's number of years farming</label> 
-										<select name="farmerNumberOfYearsFarming" id="farmerNumberOfYearsFarming" class="form-select">
-											<option value="">No. of years farming</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-											<option value="11">11</option>
-											<option value="12">12</option>
-											<option value="13">13</option>
-											<option value="14">14</option>
-											<option value="15">15</option>
-											<option value="16">16</option>
-											<option value="17">17</option>
-											<option value="18">18</option>
-											<option value="19">19</option>
-											<option value="20" selected>20</option>
-											<option value="21">21</option>
-											<option value="22">22</option>
-											<option value="23">23</option>
-											<option value="24">24</option>
-											<option value="25">25</option>
-											<option value="26">26</option>
-											<option value="27">27</option>
-											<option value="28">28</option>
-											<option value="29">29</option>
-											<option value="30">30</option>
-											<option value="31">31</option>
-											<option value="32">32</option>
-											<option value="33">33</option>
-											<option value="34">34</option>
-											<option value="35">35</option>
-											<option value="36">36</option>
-											<option value="37">37</option>
-											<option value="38">38</option>
-											<option value="39">39</option>
-											<option value="40">40</option>
-											<option value="40+">40+<option>
+				                    <div class="mb-3">
+										<div class="form-label">Select insurance provider</div>
+										<select class="form-select" name="insuranceProvider" id="insuranceProvider">
+										    <option value="<%=theResultSet.getString(14) %>"><%=theResultSet.getString(14) %></option>
+										    <option value="I have no insurance">I have no insurance</option>
+											<option value="NHIF">NHIF</option>
+											<option value="Kenya Reinsurance">Kenya Reinsurance</option>
 										</select>
-									</div>
-									<div class="mb-3">
-										<label class="form-label">Farmer's additional notes <span
-											class="form-label-description">56/100</span></label>
-										<textarea class="form-control" name="farmerAdditionalNotes"
-											id="farmerAdditionalNotes" rows="6" placeholder="Content..">Oh! Come and see the violence inherent in the system! Help, help, I'm being repressed! We shall say 'Ni' again to you, if you do not appease us. I'm not a witch. I'm not a witch. Camelot!</textarea>
-									</div>
-									
-									<!-- This is from the registration table that will be saved to the register farmer table -->
-									<input type="hidden" id="userRegisteringTheFarmer" name="userRegisteringTheFarmer" value="<%=session.getAttribute("name")%>">
-									
+									</div>									
 									<div class="form-footer">
-										<button type="submit" class="btn btn-primary w-100">Apply for leave</button>
+										<button type="submit" class="btn btn-primary w-100">Edit a patient</button>
 									</div>
 								</div>
 							</form>
+							<%
+						    	}
+						    }
+						    catch(Exception e)
+						    {
+						    	System.out.println(e);
+						    }
+							%>
 						</div>
 					</div>
         </div>

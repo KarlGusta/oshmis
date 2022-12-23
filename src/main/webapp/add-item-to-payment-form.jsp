@@ -8,7 +8,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>OSHMIS - All patients - Edit patients</title>
+    <title>OSHMIS - Add item to Patient's Payment</title>
     <!-- CSS files -->
     <link href="./dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -178,7 +178,7 @@
                     <span class="input-icon-addon">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7" /><line x1="21" y1="21" x2="15" y2="15" /></svg>
                     </span>
-                    <input type="text" value="" class="form-control" placeholder="Searchâ¦" aria-label="Search in website">
+                    <input type="text" value="" class="form-control" placeholder="Search…" aria-label="Search in website">
                   </div>
                 </form>
               </div>
@@ -191,102 +191,84 @@
       
       <!-- This is the start of the contents of the page -->
       <div class="page-wrapper">
-         <div class="container-xl">
-          <!-- Page title -->
-          <div class="page-header d-print-none">
-            <div class="row g-2 align-items-center">
-              <div class="col">
-                <h2 class="page-title">
-                  All patients and edit a patient
-                </h2>
-              </div>
-            </div>
-          </div>
-          
-           <!-- Success or error message -->
-			<%
-                String msg=request.getParameter("msg");
-                if("done".equals(msg))
-                  {
-             %>
-             <div class="alert-success">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                     Edit patient details successful!
-             </div>
-             <%} %>
-             <%
-                 if("wrong".equals(msg))
-                  {
-              %>
-             <div class="alert-error">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                     Patient details not edited. Please try again!
-             </div>
-             <%} %>
-         <!-- End of success or error message -->
-         
-        </div>
         <div class="page-body">
         <div class="container-xl">
-			<!-- Content here -->
-			<div class="row row-cards">
-              <div class="col-12">
-                <div class="card">
-                  <div class="table-responsive">
-                    <table
-		                  class="table table-vcenter card-table">
-                      <thead>
-                        <tr>
-                          <th>No.</th>
-                          <th>Name</th>
-                          <th>ID Number</th>
-                          <th>Location</th>
-                          <th>Mode of payment</th>
-                          <th class="w-1"></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <%
-                    		
-                    	// With this, I want to show "Nothing to show" when there is no data to display from the database.
-                    	int dataToShowOnTheTable = 0;
-                      
-                          try
-                          {
-                        	  Connection theConnectionToTheDB = ConnectionProvider.getCon();
-                        	  Statement theStatement = theConnectionToTheDB.createStatement();
-                        	  
-                        	  ResultSet theResultSet = theStatement.executeQuery("select * from patients");
-                        	  
-                        	  while(theResultSet.next())
-                        	  {
-                        	    dataToShowOnTheTable = 1;
-                      %>
-                        <tr>
-                          <td><%=theResultSet.getString(1) %></td>
-                          <td ><%=theResultSet.getString(2) %></td>
-                          <td class="text-muted" ><%=theResultSet.getString(9) %></td>
-                          <td class="text-muted" ><a href="#" class="text-reset"><%=theResultSet.getString(7) %></a></td>
-                          <td class="text-muted" ><%=theResultSet.getString(13) %></td>
-                          <td><a href="edit-a-patient.jsp?id=<%=theResultSet.getString(1) %>">Edit</a></td>
-                        </tr>
-                        <%
-                        	  }
-                          }
-                          catch(Exception e)
-                          {
-                        	  System.out.println(e);
-                          }
-                        %>
-                      </tbody>
-                    </table>
-                    <%if(dataToShowOnTheTable==0){ %>
-                        <h2 class="card-title text-center mb-2 mt-2">Nothing to show.</h2>
-                    <%} %>
-                  </div>
-                </div>
-              </div>
-            </div>
+					<!-- Content here -->
+					<div class="page page-center">
+						<div class="container-tight py-4">
+						
+						<!-- Product ID -->
+						<%
+						    // Get the id from the URL
+                            String id = request.getParameter("id");
+						
+						    // Get the item id from the URL
+						    String itemId = request.getParameter("itemId");
+						
+						    try
+						    {
+						    	Connection theConnectionToTheDB = ConnectionProvider.getCon();
+						    	Statement theStatement = theConnectionToTheDB.createStatement();
+						    	
+						    	ResultSet theResultSet = theStatement.executeQuery("select * from items where itemId='"+itemId+"'");
+						    	while(theResultSet.next())
+						    	{
+						    		
+						%>
+						<!-- End of Product ID -->
+						
+							<form class="card card-md" action="edit-a-patient-action.jsp" method="post">
+								<div class="card-body">
+								<!-- Success or error message -->
+								    <%
+                                      String msg=request.getParameter("msg");
+                                      if("valid".equals(msg))
+                                       {
+                                     %>
+                                     <div class="alert-success">
+                                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                       Patient registered successfully!
+                                     </div>
+                                    <%} %>
+                                    <%
+                                     if("invalid".equals(msg))
+                                       {
+                                      %>
+                                     <div class="alert-error">
+                                       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                        Patient not registered. Please try again!
+                                     </div>
+                                    <%} %>
+                                    <!-- End of success or error message -->
+									<h2 class="card-title text-center mb-4">Add item to Patient's payment</h2>
+									<input type="hidden" name="id" value="<% out.println(id); %>">
+                                    <div class="mb-3">
+                                        <label class="form-label">Item's ID</label>
+                                        <input type="text" class="form-control" name="itemId" value="<%=theResultSet.getString(1) %>" placeholder="Enter Item ID" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Item's Name</label>
+                                        <input type="text" class="form-control" name="itemName" value="<%=theResultSet.getString(2) %>" placeholder="Enter Item Name" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Item's Price</label>
+                                        <input type="text" class="form-control" name="itemCashPrice" value="<%=theResultSet.getString(3) %>" placeholder="Enter Item Cash Price" disabled>
+                                    </div>									
+									<div class="form-footer">
+										<button type="submit" class="btn btn-primary w-100">Add to payment</button>
+									</div>
+								</div>
+							</form>
+							<%
+						    	}
+						    }
+						    catch(Exception e)
+						    {
+						    	System.out.println(e);
+						    }
+							%>
+						</div>
+					</div>
         </div>
         </div>   
         <!-- This is the start of the footer -->
