@@ -242,7 +242,7 @@
                         	  
                         	  while(theResultSet.next())
                         	  {
-                        	
+                        		  dataToShowOnTheTable = 1;
                       %>
                         <tr>
                           <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
@@ -261,6 +261,9 @@
                         %>
                       </tbody>
                     </table>
+                    <%if(dataToShowOnTheTable == 0){ %>
+                        <h2 class="card-title text-center mb-2 mt-2">Nothing to show.</h2>
+                    <%} %>
                   </div>
                   <div class="card-footer d-flex align-items-center">
                     <p class="m-0 text-muted">Showing <span>1</span> to <span>8</span> of <span>16</span> entries</p>
