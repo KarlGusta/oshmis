@@ -236,27 +236,33 @@
                       </thead>
                       <tbody>
                           <%	 
-                       // Get the id from the URL
+                          // Get the id from the URL
                           String id = request.getParameter("id");
+                          
+                          // With this, I want to show "Nothing to show" when there is no data to display from the database.
+                          int dataToShowOnTheTable = 0;
                     		 
                           try
-                          {
-                        	  Connection theConnectionToTheDBTwo = ConnectionProvider.getCon();
-                        	  Statement theStatementTwo = theConnectionToTheDBTwo.createStatement();
+                          { 
+                        	  String search = request.getParameter("search");
                         	  
-                        	  ResultSet theResultSetTwo = theStatementTwo.executeQuery("select * from patients");
+                        	  Connection theConnectionToTheDB = ConnectionProvider.getCon();
+                        	  Statement theStatement = theConnectionToTheDB.createStatement();
                         	  
-                        	  while(theResultSetTwo.next())
+                        	  ResultSet theResultSet = theStatement.executeQuery("select * from patients where name like '%"+search+"%' or idNumber like '%"+search+"%'");
+                        	  
+                        	  while(theResultSet.next())
                         	  {
+                        		  dataToShowOnTheTable = 1;
                         	
                       %>
                         <tr>
                           <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
-                          <td><span class="text-muted"><%=theResultSetTwo.getString(1) %></span></td>
-                          <td><a href="#" class="text-reset" tabindex="-1"><%=theResultSetTwo.getString(2) %></a></td>
-                          <td><%=theResultSetTwo.getString(9) %></td>
-                          <td><%=theResultSetTwo.getString(7) %></td>
-                          <td><a class="btn btn-primary" href="item-to-add-to-payment.jsp?id=<%=theResultSetTwo.getString(1) %>">Select patient</a></td>
+                          <td><span class="text-muted"><%=theResultSet.getString(1) %></span></td>
+                          <td><a href="#" class="text-reset" tabindex="-1"><%=theResultSet.getString(2) %></a></td>
+                          <td><%=theResultSet.getString(9) %></td>
+                          <td><%=theResultSet.getString(7) %></td>
+                          <td><a class="btn btn-primary" href="item-to-add-to-payment.jsp?id=<%=theResultSet.getString(1) %>">Select patient</a></td>
                         </tr>
                             <%
                         	  }
@@ -268,6 +274,9 @@
                         %>
                       </tbody>
                     </table>
+                    <%if(dataToShowOnTheTable == 0){ %>
+                        <h2 class="card-title text-center mb-2 mt-2">Nothing to show</h2>
+                    <%} %>
                   </div>
                   <div class="card-footer d-flex align-items-center">
                     <p class="m-0 text-muted">Showing <span>1</span> to <span>8</span> of <span>16</span> entries</p>
